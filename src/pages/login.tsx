@@ -1,6 +1,6 @@
 import '../App.css';
 import React, { useState } from 'react';
-import { Card, Typography } from '@mui/material';
+import { Button, Box, Divider, TextField, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../api/auth';
 import { setAuthToken } from '../utils/auth';
@@ -25,13 +25,40 @@ const Login: React.FC = () => {
 
   return (
     <div>
-      <Typography variant="h1"> Welcome Back! </ Typography>
-      <p> {loginError} </ p>
-      <form onSubmit={handleSubmit}>
-        <input onChange={e => setUsername(e.target.value)} placeholder="username" /> <br />
-        <input onChange={e => setPassword(e.target.value)} placeholder="password" type="password" /><br />
-        <input type="submit" value="Submit" />
-      </form>
+      <Box sx={{
+        marginTop: 8,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center'
+      }}>
+        <Box component="form" onSubmit={handleSubmit}>
+          <h1>Sign in</h1>
+          <Typography color="error"> {loginError} </ Typography>
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            onChange={e => setUsername(e.target.value)}
+            placeholder="Username"
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            onChange={e => setPassword(e.target.value)}
+            placeholder="Password"
+            type="password"
+          />
+          <Divider />
+          <Button
+            fullWidth
+            variant="contained"
+            type="submit"
+            value="Submit"
+            sx={{ mt: 3, mb: 2 }}
+          > Sign in </Button>
+        </Box>
+      </Box>
     </div >
   );
 }
