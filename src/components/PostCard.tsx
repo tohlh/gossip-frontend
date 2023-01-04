@@ -16,9 +16,9 @@ const PostCard = (
   }: post
 ) => {
   moment.locale("en-SG");
-  const datetime = moment(created_at).format("YYYY/MM/DD, HHmm");
+  const datetime = moment(created_at).format("YYYY/MM/DD, HH:mm");
   const tag_chips = (
-    <Stack spacing={1} direction="row">
+    <Stack spacing={1} direction="row" sx={{ overflow: "auto" }}>
       {tags.map(tag =>
         <div key={tag.title}>
           <Chip label={tag.title} size="small" color="primary" />
@@ -42,7 +42,7 @@ const PostCard = (
 
         <CardContent sx={{ textAlign: "right" }}>
           <Typography variant="caption" alignSelf="right">
-            Posted by {user.name} @ {datetime} SGT
+            Posted by {user.username} @ {datetime} Local Time
           </Typography>
           <Typography variant="caption" color="warning">
             {is_edited ? " (Edited)" : ""}
