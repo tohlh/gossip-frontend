@@ -1,4 +1,4 @@
-import { apiClient } from "../api";
+import { authClientGet } from "../api";
 import { getAuthToken } from "../utils/auth";
 
 export type tag = {
@@ -7,6 +7,5 @@ export type tag = {
 
 export const getTags = () => {
   const token = getAuthToken();
-  apiClient.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-  return apiClient.get("/tags/")
+  return authClientGet(token, "/tags/");
 }
