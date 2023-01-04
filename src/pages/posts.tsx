@@ -34,8 +34,8 @@ const Posts: React.FC = () => {
 
   return (
     <Container sx={{ mt: 12, mb: 4 }} >
-      <Grid container direction="row">
-        <Grid item md={12} sx={{ ml: 30 }}>
+      <Grid container flex="true" direction="row">
+        <Grid item xs={12}>
           <Grid
             container
             spacing={3}
