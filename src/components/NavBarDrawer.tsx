@@ -2,6 +2,7 @@ import '../App.css';
 import { useEffect, useState } from 'react';
 import {
   AppBar,
+  Divider,
   Drawer,
   IconButton,
   List,
@@ -9,10 +10,10 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  Toolbar,
-  Typography
+  Toolbar
 } from '@mui/material';
-import { MenuOutlined, Tag } from '@mui/icons-material'
+import { Link } from 'react-router-dom';
+import { Home, MenuOutlined, Tag } from '@mui/icons-material'
 import { useAppSelector, useAppDispatch } from '../store/hooks';
 import { setTagsAsync, selectTags } from '../store/tagSlice';
 
@@ -29,14 +30,36 @@ export default function NavBarDrawer() {
     setMenuOpen(!menuOpen);
   }
 
-  const tags_list = (
+  const drawer_list = (
     <List sx={{ width: "100%", maxWidth: 280, mt: 10 }}>
+      <ListItem
+        component={Link}
+        to={"/"}
+        disablePadding
+        sx={{ color: 'inherit' }}
+      >
+        <ListItemButton>
+          <ListItemIcon>
+            <Home />
+          </ListItemIcon>
+          <ListItemText>
+            Home
+          </ListItemText>
+        </ListItemButton>
+      </ListItem>
+
+      <Divider />
+
       {tags.map(tag =>
-        <ListItem key={tag.title} disablePadding>
+        <ListItem
+          component={Link}
+          to={"/tag/" + tag.title}
+          key={tag.title}
+          disablePadding
+          sx={{ color: 'inherit' }}
+        >
           <ListItemButton>
-            <ListItemIcon>
-              <Tag />
-            </ListItemIcon>
+            <ListItemIcon><Tag /></ListItemIcon>
             <ListItemText primary={tag.title} />
           </ListItemButton>
         </ListItem>
@@ -54,11 +77,9 @@ export default function NavBarDrawer() {
           >
             <MenuOutlined />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Gossip
-          </Typography>
         </Toolbar>
       </AppBar>
+
       <Drawer variant="permanent"
         sx={{
           position: "fixed",
@@ -67,7 +88,7 @@ export default function NavBarDrawer() {
         }}
         open
       >
-        {tags_list}
+        {drawer_list}
       </Drawer>
 
       <Drawer
@@ -79,10 +100,10 @@ export default function NavBarDrawer() {
         }}
         sx={{
           display: { xs: "block", lg: "none" },
-          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 230 },
+          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 270 },
         }}
       >
-        {tags_list}
+        {drawer_list}
       </Drawer>
     </div>
   );

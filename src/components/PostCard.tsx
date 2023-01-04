@@ -1,4 +1,5 @@
 import moment from "moment"
+import { Link } from "react-router-dom";
 import { Card, CardContent, CardHeader, Chip, Divider, Typography } from "@mui/material";
 import { post } from "../api/post";
 import { Stack } from "@mui/system";
@@ -21,7 +22,9 @@ const PostCard = (
     <Stack spacing={1} direction="row" sx={{ overflow: "auto" }}>
       {tags.map(tag =>
         <div key={tag.title}>
-          <Chip label={tag.title} size="small" color="primary" />
+          <Link to={"/tag/" + tag.title} style={{ color: "inherit" }}>
+            <Chip label={tag.title} size="small" color="primary" />
+          </Link>
         </div>
       )}
     </Stack >
