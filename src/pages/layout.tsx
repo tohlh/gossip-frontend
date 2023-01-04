@@ -1,10 +1,12 @@
 import '../App.css';
 import { Outlet } from 'react-router-dom';
+import NavBarDrawer from '../components/NavBarDrawer';
 
 export default function Layout() {
   return (
     <div>
-      <Outlet></Outlet>
+      <NavBarDrawer />
+      <Outlet />
     </div>
   );
 }
