@@ -35,7 +35,7 @@ const Signup: React.FC = () => {
       }}>
         <Box component="form" onSubmit={handleSubmit}>
           <h1>Sign up</h1>
-          <p>Enter your username and password</p>
+          <p>Enter your name, username and password</p>
           <Typography color="error"> {signupError} </ Typography>
           <TextField
             margin="normal"
@@ -64,7 +64,7 @@ const Signup: React.FC = () => {
             required
             fullWidth
             onChange={e => setPasswordConfirm(e.target.value)}
-            placeholder="Password Confirmation"
+            placeholder="Confirm Password"
             type="password"
           />
           <Divider />
