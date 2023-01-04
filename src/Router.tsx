@@ -15,6 +15,7 @@ export default function Router() {
 
         <Route path="/" element={<RouteGuard pred={hasAuthToken()} element={<Layout />} redirect="/login" />} >
           <Route index element={<Posts />} />
+          <Route path="/tag/:tag" element={<Posts />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,21 +1,23 @@
 import '../App.css';
 import React, { useEffect } from 'react';
 import { Container } from '@mui/system';
-import {
-  Grid,
-} from '@mui/material';
+import { Grid } from '@mui/material';
 
 import PostCard from '../components/PostCard';
 import { useAppSelector, useAppDispatch } from '../store/hooks';
 import { setPostsAsync, selectPosts } from '../store/postSlice';
+import { useParams } from 'react-router-dom';
 
 const Posts: React.FC = () => {
-  const posts = useAppSelector(selectPosts).posts;
   const dispatch = useAppDispatch();
+  const params = useParams();
+
+  const posts = useAppSelector(selectPosts).posts;
+  const tag = params["tag"] ? params["tag"] : null;
 
   useEffect(() => {
-    dispatch(setPostsAsync({ start: 0, length: 10, tag: null }));
-  }, [dispatch]);
+    dispatch(setPostsAsync({ start: 0, length: 10, tag: tag }));
+  }, [dispatch, tag]);
 
   const posts_list = posts.map(post =>
     <Grid item key={post.id} xs={12}>
