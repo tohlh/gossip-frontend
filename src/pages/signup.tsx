@@ -4,6 +4,7 @@ import { Button, Box, Divider, TextField, Typography } from '@mui/material';
 import { Container } from '@mui/system';
 import { signup } from '../api/auth';
 import { useNavigate } from 'react-router-dom';
+import logo from "../assets/logo.png";
 
 const Signup: React.FC = () => {
   const [name, setName] = useState('');
@@ -26,7 +27,7 @@ const Signup: React.FC = () => {
   }
 
   return (
-    <Container>
+    <Container maxWidth="xs">
       <Box sx={{
         marginTop: 8,
         display: 'flex',
@@ -34,8 +35,12 @@ const Signup: React.FC = () => {
         alignItems: 'center'
       }}>
         <Box component="form" onSubmit={handleSubmit}>
-          <h1>Sign up</h1>
-          <p>Enter your name, username and password</p>
+          <img
+            src={logo}
+            width="200px"
+            height="100px"
+            alt="logo" />
+          <p>Sign up your name, username and password</p>
           <Typography color="error"> {signupError} </ Typography>
           <TextField
             margin="normal"
@@ -69,7 +74,7 @@ const Signup: React.FC = () => {
           />
           <Divider />
           <p>Already have an account?</p>
-          <a href="/login">Login here!</a>
+          <a href="/login">Sign in here!</a>
           <Button
             fullWidth
             variant="contained"

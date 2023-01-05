@@ -4,6 +4,7 @@ import { Button, Box, Divider, TextField, Typography } from '@mui/material';
 import { Container } from '@mui/system';
 import { login } from '../api/auth';
 import { setAuthToken } from '../utils/auth';
+import logo from "../assets/logo.png";
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -23,7 +24,7 @@ const Login: React.FC = () => {
   }
 
   return (
-    <Container>
+    <Container maxWidth="xs">
       <Box sx={{
         marginTop: 8,
         display: 'flex',
@@ -31,8 +32,12 @@ const Login: React.FC = () => {
         alignItems: 'center'
       }}>
         <Box component="form" onSubmit={handleSubmit}>
-          <h1>Sign in</h1>
-          <p>Welcome back!</p>
+          <img
+            src={logo}
+            width="200px"
+            height="100px"
+            alt="logo" />
+          <h1>Welcome back!</h1>
           <Typography color="error"> {loginError} </ Typography>
           <TextField
             margin="normal"

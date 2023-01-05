@@ -16,6 +16,7 @@ import { Link } from 'react-router-dom';
 import { Home, MenuOutlined, Tag } from '@mui/icons-material'
 import { useAppSelector, useAppDispatch } from '../store/hooks';
 import { setTagsAsync, selectTags } from '../store/tagSlice';
+import logo from "../assets/logo.png"
 
 export default function NavBarDrawer() {
   const tags = useAppSelector(selectTags).tags;
@@ -70,13 +71,20 @@ export default function NavBarDrawer() {
   return (
     <div>
       <AppBar>
-        <Toolbar>
+        <Toolbar sx={{ justifyContent: "space-between" }}>
           <IconButton
             onClick={handleMenu}
-            sx={{ mr: 2, display: { lg: 'none' } }}
+            sx={{ display: { lg: 'none' } }}
           >
             <MenuOutlined />
           </IconButton>
+          <Link to="/">
+            <img
+              src={logo}
+              width="100px"
+              height="50px"
+              alt="logo" />
+          </Link>
         </Toolbar>
       </AppBar>
 
