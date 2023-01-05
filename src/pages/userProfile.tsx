@@ -39,21 +39,31 @@ const UserProfile: React.FC = () => {
   const posts_grid = () => {
     return (
       <div>
-        <Grid
-          container
-          spacing={3}
-          sx={{ mt: 3, flexDirection: "column", alignItems: "center" }}
-        >
-          {
-            posts_list.length > 0
-              ? posts_list
-              : (
+        {
+          posts_list.length > 0
+            ? (
+              <Grid
+                container
+                spacing={3}
+                sx={{ mt: 3 }}
+              >
+                {posts_list}
+              </Grid>
+            )
+            : (
+              <Grid
+                container
+                spacing={3}
+                sx={{ mt: 3, flexDirection: "column", alignItems: "center" }}
+              >
                 <Typography variant="h4">
                   {user.name} has not posted anything
                 </Typography>
-              )
-          }
-        </Grid>
+              </Grid>
+            )
+        }
+
+
       </div>
     )
   }
