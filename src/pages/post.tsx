@@ -1,19 +1,24 @@
 import '../App.css';
 import React, { useEffect } from 'react';
 import { Container } from '@mui/system';
-
 import PostCard from '../components/PostCard';
+import CommentsCard from '../components/CommentsCard';
 import { useAppSelector, useAppDispatch } from '../store/hooks';
 import { setPostAsync, selectPost } from '../store/postSlice';
+import { setCommentsAsync, selectComments } from '../store/commentsSlice';
 import { useParams } from 'react-router-dom';
 
 const Post: React.FC = () => {
-  const dispatch = useAppDispatch();
   const params = useParams();
   const id = Number(params["id"]);
+
+  const dispatch = useAppDispatch();
   const post = useAppSelector(selectPost).post;
+  const comments = useAppSelector(selectComments).comments;
+  console.log(comments);
 
   useEffect(() => {
+    dispatch(setCommentsAsync({ id }));
     dispatch(setPostAsync({ id }));
     window.scrollTo(0, 0);
   }, [dispatch, id]);
@@ -33,9 +38,15 @@ const Post: React.FC = () => {
               tags={post.tags}
               user={post.user}
               created_at={post.created_at}
-            />)
+            />
+          )
       }
-    </Container>
+      {
+        comments.length > 0 &&
+        <CommentsCard comments={comments} />
+      }
+
+    </Container >
   );
 }
 

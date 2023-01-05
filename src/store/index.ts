@@ -1,17 +1,19 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import postsReducer from "./postsSlice";
-import postReducer from "./postSlice";
-import tagsReducer from "./tagSlice";
 import userReducer from "./userSlice";
 import currentUserReducer from "./currentUserSlice";
+import postsReducer from "./postsSlice";
+import postReducer from "./postSlice";
+import commentsReducer from "./commentsSlice";
+import tagsReducer from "./tagSlice";
 
 export const store = configureStore({
   reducer: {
-    posts: postsReducer,
-    post: postReducer,
-    tags: tagsReducer,
     user: userReducer,
     currentUser: currentUserReducer,
+    posts: postsReducer,
+    post: postReducer,
+    comments: commentsReducer,
+    tags: tagsReducer,
   },
 })
 
