@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Button, Box, Chip, Grid, Stack, TextField, Typography } from '@mui/material';
 import { Container } from '@mui/system';
 import { createPost } from '../api/post';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const AddPost: React.FC = () => {
   const [title, setTitle] = useState('');
@@ -10,12 +11,14 @@ const AddPost: React.FC = () => {
   const [tags, setTags] = useState<string[]>([]);
   const [currTag, setCurrTag] = useState('');
   const [postError, setPostError] = useState('');
+  const navigate = useNavigate()
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
     createPost(title, content, tags)
       .then(r => {
         window.alert("Posted successfully!");
+        navigate("/")
       })
       .catch(e => {
         setPostError(e.response.data.error);
