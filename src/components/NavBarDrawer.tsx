@@ -2,6 +2,7 @@ import '../App.css';
 import { useEffect, useState } from 'react';
 import {
   AppBar,
+  Chip,
   Divider,
   Drawer,
   IconButton,
@@ -32,62 +33,46 @@ export default function NavBarDrawer() {
   }
 
   const drawer_list = (
-    <List sx={{ width: "100%", maxWidth: 280, mt: 10 }}>
-      <ListItem
-        component={Link}
-        to={"/"}
-        disablePadding
-        sx={{ color: 'inherit' }}
-      >
-        <ListItemButton>
-          <ListItemIcon>
-            <Home />
-          </ListItemIcon>
-          <ListItemText>
-            Home
-          </ListItemText>
-        </ListItemButton>
-      </ListItem>
-
-      <Divider />
-
-      {tags.map(tag =>
+    <div>
+      <List sx={{ width: "100%", maxWidth: 280, mt: 10 }}>
         <ListItem
           component={Link}
-          to={"/tag/" + tag.title}
-          key={tag.title}
+          to={"/"}
           disablePadding
           sx={{ color: 'inherit' }}
         >
           <ListItemButton>
-            <ListItemIcon><Tag /></ListItemIcon>
-            <ListItemText primary={tag.title} />
+            <ListItemIcon>
+              <Home />
+            </ListItemIcon>
+            <ListItemText>
+              Home
+            </ListItemText>
           </ListItemButton>
         </ListItem>
-      )}
-    </List>
+
+        <Divider />
+
+        {tags.map(tag =>
+          <ListItem
+            component={Link}
+            to={"/tag/" + tag.title}
+            key={tag.title}
+            disablePadding
+            sx={{ color: 'inherit' }}
+          >
+            <ListItemButton>
+              <ListItemIcon><Tag /></ListItemIcon>
+              <ListItemText primary={tag.title} />
+            </ListItemButton>
+          </ListItem>
+        )}
+      </List>
+    </div>
   )
 
-  return (
+  const drawer = (
     <div>
-      <AppBar>
-        <Toolbar sx={{ justifyContent: "space-between" }}>
-          <IconButton
-            onClick={handleMenu}
-            sx={{ display: { lg: 'none' } }}
-          >
-            <MenuOutlined />
-          </IconButton>
-          <Link to="/">
-            <img
-              src={logo}
-              width="100px"
-              height="50px"
-              alt="logo" />
-          </Link>
-        </Toolbar>
-      </AppBar>
-
       <Drawer variant="permanent"
         sx={{
           position: "fixed",
@@ -114,5 +99,32 @@ export default function NavBarDrawer() {
         {drawer_list}
       </Drawer>
     </div>
-  );
+  )
+
+  const toolbar = (
+    <AppBar>
+      <Toolbar sx={{ justifyContent: "space-between" }}>
+        <IconButton
+          onClick={handleMenu}
+          sx={{ display: { lg: 'none' } }}
+        >
+          <MenuOutlined />
+        </IconButton>
+        <Link to="/">
+          <img
+            src={logo}
+            width="100px"
+            height="50px"
+            alt="logo" />
+        </Link>
+      </Toolbar>
+    </AppBar>
+  )
+
+  return (
+    <div>
+      {toolbar}
+      {drawer}
+    </div>
+  )
 }
