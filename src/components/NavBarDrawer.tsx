@@ -22,6 +22,7 @@ import { useAppSelector, useAppDispatch } from '../store/hooks';
 import { setTagsAsync, selectTags } from '../store/tagSlice';
 import { setCurrentUserAsync, selectUser } from '../store/userSlice';
 import logo from "../assets/logo.png"
+import { removeAuthToken } from '../utils/auth';
 
 export default function NavBarDrawer() {
   const [tagMenuOpen, setTagMenuOpen] = useState(false);
@@ -45,6 +46,11 @@ export default function NavBarDrawer() {
 
   const handleUserMenuClose = () => {
     setUserMenuAnchor(null);
+  }
+
+  const handleLogout = () => {
+    removeAuthToken();
+    window.location.reload();
   }
 
   const tags_menu = (
@@ -145,6 +151,12 @@ export default function NavBarDrawer() {
           sx={{ color: 'inherit' }}
         >
           Account Settings
+        </MenuItem>
+        <MenuItem
+          onClick={handleLogout}
+          sx={{ color: 'inherit' }}
+        >
+          Logout
         </MenuItem>
       </Menu>
     </div>
