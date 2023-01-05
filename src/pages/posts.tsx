@@ -17,6 +17,7 @@ const Posts: React.FC = () => {
 
   useEffect(() => {
     dispatch(setPostsAsync({ start: 0, length: 10, tag: tag }));
+    window.scrollTo(0, 0);
   }, [dispatch, tag]);
 
   const posts_list = posts.map(post =>

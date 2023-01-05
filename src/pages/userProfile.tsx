@@ -16,6 +16,7 @@ const UserProfile: React.FC = () => {
   const posts = useAppSelector(selectPosts).posts
   const dispatch = useAppDispatch();
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(setUserAsync(username));
     dispatch(setUserPostsAsync({ username: username, start: 0, length: 10 }));
   }, [dispatch, username]);
