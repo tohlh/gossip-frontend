@@ -1,8 +1,8 @@
 import '../App.css';
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Container } from '@mui/system';
-import { Grid, Typography } from '@mui/material';
+import { CardActionArea, Grid, Typography } from '@mui/material';
 import PostCard from '../components/PostCard';
 import UserCard from '../components/UserCard';
 import { useAppSelector, useAppDispatch } from '../store/hooks';
@@ -24,16 +24,22 @@ const UserProfile: React.FC = () => {
 
   const posts_list = posts.map(post =>
     <Grid item key={post.id} xs={12}>
-      <PostCard
-        id={post.id}
-        title={post.title}
-        content={post.content}
-        is_edited={post.is_edited}
-        is_op={post.is_op}
-        tags={post.tags}
-        user={post.user}
-        created_at={post.created_at}
-      />
+      <CardActionArea
+        sx={{ borderRadius: 4 }}
+        component={Link}
+        to={"/post/" + post.id}
+      >
+        <PostCard
+          id={post.id}
+          title={post.title}
+          content={post.content}
+          is_edited={post.is_edited}
+          is_op={post.is_op}
+          tags={post.tags}
+          user={post.user}
+          created_at={post.created_at}
+        />
+      </CardActionArea>
     </Grid>
   )
 
@@ -41,24 +47,26 @@ const UserProfile: React.FC = () => {
     <div>
       {
         posts_list.length > 0
-          ?
-          <Grid
-            container
-            spacing={3}
-            sx={{ mt: 3 }}
-          >
-            {posts_list}
-          </Grid>
-          :
-          <Grid
-            container
-            spacing={3}
-            sx={{ mt: 3, flexDirection: "column", alignItems: "center" }}
-          >
-            <Typography variant="h4">
-              {user.name} has not posted anything
-            </Typography>
-          </Grid>
+          ? (
+            <Grid
+              container
+              spacing={3}
+              sx={{ mt: 3 }}
+            >
+              {posts_list}
+            </Grid>
+          )
+          : (
+            <Grid
+              container
+              spacing={3}
+              sx={{ mt: 3, flexDirection: "column", alignItems: "center" }}
+            >
+              <Typography variant="h4">
+                {user.name} has not posted anything
+              </Typography>
+            </Grid>
+          )
       }
     </div>
   )
