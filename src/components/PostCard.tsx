@@ -34,18 +34,18 @@ const PostCard = (
       <Card elevation={5} sx={{ borderRadius: 4 }}>
         <CardHeader align="left" title={title} />
         <Divider />
-        <CardContent sx={{ textAlign: "left" }}>
+        <CardContent sx={{ textDecoration: 'none', textAlign: "left" }}>
           <Typography
             sx={{ whiteSpace: "pre-line" }}
             variant="body1"
           >{content}</Typography>
         </CardContent>
 
-        <CardContent sx={{ alignContent: "right" }}>
+        <CardContent sx={{ textDecoration: 'none', alignContent: "right" }}>
           {tag_chips}
         </CardContent>
 
-        <CardContent sx={{ textAlign: "right" }}>
+        <CardContent sx={{ textDecoration: 'none', textAlign: "right" }}>
           <Typography variant="caption" alignSelf="right">
             <Typography
               sx={{ color: "inherit" }}
