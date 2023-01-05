@@ -44,7 +44,14 @@ const AddPost: React.FC = () => {
   }
 
   const tag_chips = (
-    <Stack spacing={1} direction="row" sx={{ overflow: "auto" }}>
+    <Stack
+      spacing={1}
+      direction="row"
+      sx={{
+        maxWidth: "100%",
+        overflow: "auto"
+      }}
+    >
       {tags.map(tag =>
         <div key={tag}>
           <Chip
