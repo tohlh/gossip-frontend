@@ -2,27 +2,24 @@ import '../App.css';
 import React, { useState } from 'react';
 import { Button, Box, Divider, TextField, Typography } from '@mui/material';
 import { Container } from '@mui/system';
-import { signup } from '../api/auth';
-import { useNavigate } from 'react-router-dom';
+import { login } from '../api/auth';
+import { setAuthToken } from '../utils/auth';
 import logo from "../assets/logo.png";
 
-const Signup: React.FC = () => {
-  const [name, setName] = useState('');
+const Signin: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [passwordConfirm, setPasswordConfirm] = useState('');
-  const [signupError, setsignupError] = useState('');
-  const navigate = useNavigate();
+  const [loginError, setLoginError] = useState('');
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    signup(name, username, password, passwordConfirm)
+    login(username, password)
       .then(r => {
-        window.alert("Account successfully created!");
-        navigate("/login");
+        setAuthToken(r.data.token);
+        window.location.reload();
       })
       .catch(e => {
-        setsignupError(e.response.data.error);
+        setLoginError(e.response.data.error);
       })
   }
 
@@ -33,21 +30,15 @@ const Signup: React.FC = () => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center'
-      }} component="form" onSubmit={handleSubmit}>
+      }}
+        component="form" onSubmit={handleSubmit}>
         <img
           src={logo}
           width="200px"
           height="100px"
           alt="logo" />
-        <p>Sign up with your name, username and password</p>
-        <Typography color="error"> {signupError} </ Typography>
-        <TextField
-          margin="normal"
-          required
-          fullWidth
-          onChange={e => setName(e.target.value)}
-          placeholder="Name"
-        />
+        <h1>Welcome back!</h1>
+        <Typography color="error"> {loginError} </ Typography>
         <TextField
           margin="normal"
           required
@@ -63,26 +54,18 @@ const Signup: React.FC = () => {
           placeholder="Password"
           type="password"
         />
-        <TextField
-          margin="normal"
-          required
-          fullWidth
-          onChange={e => setPasswordConfirm(e.target.value)}
-          placeholder="Confirm Password"
-          type="password"
-        />
-        <p>Already have an account?</p>
-        <a href="/login">Sign in here!</a>
+        <p>Don't have an account yet?</p>
+        <a href="/signup">Create one now!</a>
         <Button
           fullWidth
           variant="contained"
           type="submit"
           value="Submit"
           sx={{ mt: 3, mb: 2 }}
-        > Sign up </Button>
+        > Sign in </Button>
       </Box>
     </Container>
   );
 }
 
-export default Signup;
+export default Signin;
