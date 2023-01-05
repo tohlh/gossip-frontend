@@ -14,14 +14,12 @@ export type post = {
 
 export const getPosts = (start: number, length: number, tag: string | null) => {
   const token = getAuthToken();
-  return authClientGet(token, "/posts/", {
-    params:
+  return authClientGet(token, "/posts/",
     {
       start: start,
       length: length,
       tag: tag
-    }
-  });
+    });
 }
 
 export const createPost = (post: post) => {

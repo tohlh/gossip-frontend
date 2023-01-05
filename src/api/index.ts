@@ -11,7 +11,7 @@ export const apiClient = axios.create({
 
 export const authClientGet = (token: string | null, path: string, params = {}) => {
   apiClient.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-  return apiClient.get(path, params)
+  return apiClient.get(path, { params: params })
     .then(r => r)
     .catch(e => {
       if (e.response.status === 401) {
