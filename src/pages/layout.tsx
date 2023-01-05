@@ -1,6 +1,8 @@
 import '../App.css';
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { Container } from '@mui/system';
+import { Fab } from '@mui/material';
+import { Add } from '@mui/icons-material';
 import NavBarDrawer from '../components/NavBarDrawer';
 
 export default function Layout() {
@@ -9,6 +11,17 @@ export default function Layout() {
       <NavBarDrawer />
       <Container maxWidth="md" >
         <Outlet />
+        <Fab
+          component={Link}
+          to="/post/create"
+          color="primary"
+          sx={{
+            position: 'fixed',
+            bottom: 16,
+            right: 16,
+          }}>
+          <Add />
+        </Fab>
       </Container>
     </div>
   );

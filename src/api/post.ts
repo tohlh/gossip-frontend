@@ -22,9 +22,13 @@ export const getPosts = (start: number, length: number, tag: string | null) => {
     });
 }
 
-export const createPost = (post: post) => {
+export const createPost = (title: string, content: string, tags: string[]) => {
   const token = getAuthToken();
-  return authClientPost(token, "/post/");
+  return authClientPost(token, "/post/", {
+    title: title,
+    content: content,
+    tags: tags,
+  });
 }
 
 export const getUserPosts = (username: string | null, start: number, length: number) => {
