@@ -2,8 +2,9 @@ import '../App.css';
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container } from '@mui/system';
-import { Avatar, Card, CardHeader, CardContent, Grid, Typography, Divider } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import PostCard from '../components/PostCard';
+import UserCard from '../components/UserCard';
 import { useAppSelector, useAppDispatch } from '../store/hooks';
 import { setUserAsync, selectUser } from '../store/userSlice';
 import { selectPosts, setUserPostsAsync } from '../store/postSlice';
@@ -36,65 +37,31 @@ const UserProfile: React.FC = () => {
     </Grid>
   )
 
-  const posts_grid = () => {
-    return (
-      <div>
-        {
-          posts_list.length > 0
-            ? (
-              <Grid
-                container
-                spacing={3}
-                sx={{ mt: 3 }}
-              >
-                {posts_list}
-              </Grid>
-            )
-            : (
-              <Grid
-                container
-                spacing={3}
-                sx={{ mt: 3, flexDirection: "column", alignItems: "center" }}
-              >
-                <Typography variant="h4">
-                  {user.name} has not posted anything
-                </Typography>
-              </Grid>
-            )
-        }
-
-
-      </div>
-    )
-  }
-
-  const user_card = () => {
-    return (
-      <div>
-        <Card elevation={5} sx={{ borderRadius: 4 }}>
-          <CardHeader
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center"
-            }}
-            avatar={<Avatar color="primary" sx={{ width: 80, height: 80, fontSize: 70 }}>
-              {user.name[0]}
-            </Avatar>}
-          />
-          <Divider />
-          <CardContent>
-            <Typography variant="h3">
-              {user.name}
+  const posts_grid = (
+    <div>
+      {
+        posts_list.length > 0
+          ?
+          <Grid
+            container
+            spacing={3}
+            sx={{ mt: 3 }}
+          >
+            {posts_list}
+          </Grid>
+          :
+          <Grid
+            container
+            spacing={3}
+            sx={{ mt: 3, flexDirection: "column", alignItems: "center" }}
+          >
+            <Typography variant="h4">
+              {user.name} has not posted anything
             </Typography>
-            <Typography variant="body1">
-              @{user.username}
-            </Typography>
-          </CardContent>
-        </Card>
-      </div >
-    )
-  }
+          </Grid>
+      }
+    </div>
+  )
 
   return (
     <Container sx={{ mt: 12, mb: 4 }} maxWidth="sm">
@@ -102,8 +69,8 @@ const UserProfile: React.FC = () => {
         user !== undefined
           ? (
             <div>
-              <div>{user_card()}</div>
-              <div>{posts_grid()}</div>
+              <UserCard name={user.name} username={user.username} />
+              <div>{posts_grid}</div>
             </div>
           )
           : <h1>User not found</h1>

@@ -5,7 +5,6 @@ import { post } from "../api/post";
 import { Stack } from "@mui/system";
 
 const PostCard = (
-
   { id,
     title,
     content,

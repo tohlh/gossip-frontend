@@ -4,12 +4,12 @@ import { RootState } from '.';
 
 export interface UserState {
   currentUser: {
-    name: String;
-    username: String;
+    name: string;
+    username: string;
   };
   user: {
-    name: String;
-    username: String;
+    name: string;
+    username: string;
   }
   status: 'idle' | 'loading' | 'failed';
 }
