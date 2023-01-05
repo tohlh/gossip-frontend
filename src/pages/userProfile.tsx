@@ -97,7 +97,7 @@ const UserProfile: React.FC = () => {
   }
 
   return (
-    <Container sx={{ mt: 12, mb: 4, textAlign: "center" }}>
+    <Container sx={{ mt: 12, mb: 4 }} maxWidth="sm">
       {
         user !== undefined
           ? (
