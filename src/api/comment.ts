@@ -17,7 +17,10 @@ export const getComments = (post_id: number) => {
   });
 }
 
-export const postComment = (post_id: number, content: string) => {
+export const addComment = (post_id: number, content: string) => {
   const token = getAuthToken();
-  return authClientPost(token, "/comment/", {})
+  return authClientPost(token, "/comment/", {
+    post_id: post_id,
+    content: content,
+  })
 }
