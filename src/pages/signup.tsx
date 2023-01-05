@@ -40,7 +40,7 @@ const Signup: React.FC = () => {
             width="200px"
             height="100px"
             alt="logo" />
-          <p>Sign up your name, username and password</p>
+          <p>Sign up with your name, username and password</p>
           <Typography color="error"> {signupError} </ Typography>
           <TextField
             margin="normal"
