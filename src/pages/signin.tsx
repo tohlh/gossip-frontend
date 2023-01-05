@@ -1,6 +1,6 @@
 import '../App.css';
 import React, { useState } from 'react';
-import { Button, Box, Divider, TextField, Typography } from '@mui/material';
+import { Button, Box, TextField, Typography } from '@mui/material';
 import { Container } from '@mui/system';
 import { login } from '../api/auth';
 import { setAuthToken } from '../utils/auth';
