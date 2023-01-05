@@ -16,7 +16,7 @@ export const setTagsAsync = createAsyncThunk(
   'post/getTags',
   async () => {
     const response = await getTags();
-    return response.data;
+    return response ? response.data : null;
   }
 );
 

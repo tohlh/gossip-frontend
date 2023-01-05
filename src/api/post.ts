@@ -14,12 +14,18 @@ export type post = {
 
 export const getPosts = (start: number, length: number, tag: string | null) => {
   const token = getAuthToken();
-  return authClientGet(token, "/posts/",
-    {
-      start: start,
-      length: length,
-      tag: tag
-    });
+  return authClientGet(token, "/posts/", {
+    start: start,
+    length: length,
+    tag: tag
+  });
+}
+
+export const getPost = (id: number | null) => {
+  const token = getAuthToken();
+  return authClientGet(token, "/post/", {
+    id: id
+  });
 }
 
 export const createPost = (title: string, content: string, tags: string[]) => {
@@ -33,10 +39,9 @@ export const createPost = (title: string, content: string, tags: string[]) => {
 
 export const getUserPosts = (username: string | null, start: number, length: number) => {
   const token = getAuthToken();
-  return authClientGet(token, "/user/posts/",
-    {
-      username: username,
-      start: start,
-      length: length
-    });
+  return authClientGet(token, "/user/posts/", {
+    username: username,
+    start: start,
+    length: length
+  });
 }

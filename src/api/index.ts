@@ -18,7 +18,7 @@ export const authClientGet = (token: string | null, path: string, params = {}) =
         removeAuthToken();
         window.location.reload();
       }
-      return e;
+      return null;
     });
 }
 
@@ -31,6 +31,6 @@ export const authClientPost = (token: string | null, path: string, params = {}) 
         removeAuthToken();
         window.location.reload();
       }
-      return e;
+      return null;
     });
 }

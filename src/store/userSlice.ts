@@ -30,7 +30,7 @@ export const setCurrentUserAsync = createAsyncThunk(
   'user/getCurrentUser',
   async () => {
     const response = await getCurrentUser();
-    return response.data;
+    return response ? response.data : null;
   }
 );
 
@@ -38,7 +38,7 @@ export const setUserAsync = createAsyncThunk(
   'user/getUser',
   async (username: string | null) => {
     const response = await getUser(username);
-    return response.data;
+    return response ? response.data : null;
   }
 );
 
