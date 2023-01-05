@@ -20,7 +20,7 @@ import { Link } from 'react-router-dom';
 import { Home, MenuOutlined, Tag } from '@mui/icons-material'
 import { useAppSelector, useAppDispatch } from '../store/hooks';
 import { setTagsAsync, selectTags } from '../store/tagSlice';
-import { setCurrentUserAsync, selectUser } from '../store/userSlice';
+import { setCurrentUserAsync, selectCurrentUser } from '../store/currentUserSlice';
 import logo from "../assets/logo.png"
 import { removeAuthToken } from '../utils/auth';
 
@@ -30,7 +30,7 @@ export default function NavBarDrawer() {
 
   const dispatch = useAppDispatch();
   const tags = useAppSelector(selectTags).tags;
-  const currentUser = useAppSelector(selectUser).currentUser;
+  const currentUser = useAppSelector(selectCurrentUser).currentUser;
   useEffect(() => {
     dispatch(setTagsAsync());
     dispatch(setCurrentUserAsync());
