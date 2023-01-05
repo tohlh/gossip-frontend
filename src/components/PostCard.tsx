@@ -45,7 +45,15 @@ const PostCard = (
 
         <CardContent sx={{ textAlign: "right" }}>
           <Typography variant="caption" alignSelf="right">
-            Posted by {user.username} @ {datetime} SGT
+            <Typography
+              sx={{ color: "inherit" }}
+              variant="caption"
+              component={Link}
+              to={"/user/" + user.username}
+            >
+              @{user.username}
+            </Typography>
+            , {datetime} SGT
           </Typography>
           <Typography variant="caption" color="warning">
             {is_edited ? " (Edited)" : ""}
