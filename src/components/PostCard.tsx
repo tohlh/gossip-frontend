@@ -23,7 +23,7 @@ const PostCard = (
       {tags.map(tag =>
         <div key={tag.title}>
           <Link to={"/tag/" + tag.title} style={{ color: "inherit" }}>
-            <Chip clickable label={tag.title} size="small" color="primary" />
+            <Chip clickable label={"#" + tag.title} size="small" color="primary" />
           </Link>
         </div>
       )}

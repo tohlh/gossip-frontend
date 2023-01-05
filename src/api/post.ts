@@ -26,3 +26,13 @@ export const createPost = (post: post) => {
   const token = getAuthToken();
   return authClientPost(token, "/post/");
 }
+
+export const getUserPosts = (username: string | null, start: number, length: number) => {
+  const token = getAuthToken();
+  return authClientGet(token, "/user/posts/",
+    {
+      username: username,
+      start: start,
+      length: length
+    });
+}

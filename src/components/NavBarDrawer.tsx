@@ -12,6 +12,8 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Menu,
+  MenuItem,
   Toolbar,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
@@ -22,9 +24,10 @@ import { setCurrentUserAsync, selectUser } from '../store/userSlice';
 import logo from "../assets/logo.png"
 
 export default function NavBarDrawer() {
-  const dispatch = useAppDispatch();
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [tagMenuOpen, setTagMenuOpen] = useState(false);
+  const [userMenuAnchor, setUserMenuAnchor] = useState<null | HTMLElement>(null);
 
+  const dispatch = useAppDispatch();
   const tags = useAppSelector(selectTags).tags;
   const currentUser = useAppSelector(selectUser).currentUser;
   useEffect(() => {
@@ -32,11 +35,19 @@ export default function NavBarDrawer() {
     dispatch(setCurrentUserAsync());
   }, [dispatch]);
 
-  const handleMenu = () => {
-    setMenuOpen(!menuOpen);
+  const handleTagMenu = () => {
+    setTagMenuOpen(!tagMenuOpen);
   }
 
-  const drawer_list = (
+  const handleUserMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setUserMenuAnchor(event.currentTarget);
+  }
+
+  const handleUserMenuClose = () => {
+    setUserMenuAnchor(null);
+  }
+
+  const tags_menu = (
     <div>
       <List sx={{ width: "100%", maxWidth: 280, mt: 10 }}>
         <ListItem
@@ -81,17 +92,17 @@ export default function NavBarDrawer() {
         sx={{
           position: "fixed",
           display: { xs: "none", lg: "block" },
-          '& .MuiDrawer-paper': { boxSizing: "border-box", width: 230 },
+          '& .MuiDrawer-paper': { boxSizing: "border-box", width: 270 },
         }}
         open
       >
-        {drawer_list}
+        {tags_menu}
       </Drawer>
 
       <Drawer
         variant="temporary"
-        onClose={handleMenu}
-        open={menuOpen}
+        onClose={handleTagMenu}
+        open={tagMenuOpen}
         ModalProps={{
           keepMounted: true,
         }}
@@ -100,8 +111,51 @@ export default function NavBarDrawer() {
           '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 270 },
         }}
       >
-        {drawer_list}
+        {tags_menu}
       </Drawer>
+    </div>
+  )
+
+  const user_menu = (
+    <div>
+      <Menu
+        anchorEl={userMenuAnchor}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        keepMounted
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        open={Boolean(userMenuAnchor)}
+        onClose={handleUserMenuClose}
+      >
+        <MenuItem
+          onClick={handleUserMenuClose}
+          component={Link}
+          to={"/user/" + currentUser.username}
+          sx={{ color: 'inherit' }}
+        >
+          Profile
+        </MenuItem>
+        <MenuItem
+          onClick={handleUserMenuClose}
+          sx={{ color: 'inherit' }}
+        >
+          Account Settings
+        </MenuItem>
+      </Menu>
+    </div>
+  )
+
+  const user_avatar = (
+    <div>
+      <IconButton sx={{ borderRadius: 0 }} onClick={handleUserMenuOpen}>
+        <Chip avatar={<Avatar />} label={currentUser.username} />
+      </IconButton>
+      {user_menu}
     </div>
   )
 
@@ -109,7 +163,7 @@ export default function NavBarDrawer() {
     <AppBar>
       <Toolbar sx={{ justifyContent: "space-between" }}>
         <IconButton
-          onClick={handleMenu}
+          onClick={handleTagMenu}
           sx={{ display: { lg: 'none' } }}
         >
           <MenuOutlined />
@@ -123,7 +177,8 @@ export default function NavBarDrawer() {
             alt="logo" />
         </Link>
 
-        <Chip avatar={<Avatar />} label={currentUser.username} />
+        {user_avatar}
+
       </Toolbar>
     </AppBar>
   )

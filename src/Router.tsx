@@ -5,6 +5,7 @@ import Login from './pages/login';
 import Signup from './pages/signup';
 import Layout from './pages/layout';
 import Posts from './pages/posts';
+import UserProfile from './pages/userProfile';
 
 export default function Router() {
   return (
@@ -16,6 +17,7 @@ export default function Router() {
         <Route path="/" element={<RouteGuard pred={hasAuthToken()} element={<Layout />} redirect="/login" />} >
           <Route index element={<Posts />} />
           <Route path="/tag/:tag" element={<Posts />} />
+          <Route path="/user/:username" element={<UserProfile />} />
         </Route>
       </Routes>
     </BrowserRouter>
