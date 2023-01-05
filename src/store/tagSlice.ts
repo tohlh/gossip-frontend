@@ -21,7 +21,7 @@ export const setTagsAsync = createAsyncThunk(
 );
 
 export const tagsSlice = createSlice({
-  name: 'posts',
+  name: 'tags',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
