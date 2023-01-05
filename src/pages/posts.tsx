@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 import PostCard from '../components/PostCard';
 import { useAppSelector, useAppDispatch } from '../store/hooks';
-import { setPostsAsync, selectPosts } from '../store/postSlice';
+import { setPostsAsync, selectPosts } from '../store/postsSlice';
 import { useParams } from 'react-router-dom';
 
 const Posts: React.FC = () => {

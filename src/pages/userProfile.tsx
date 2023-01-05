@@ -7,7 +7,7 @@ import PostCard from '../components/PostCard';
 import UserCard from '../components/UserCard';
 import { useAppSelector, useAppDispatch } from '../store/hooks';
 import { setUserAsync, selectUser } from '../store/userSlice';
-import { selectPosts, setUserPostsAsync } from '../store/postSlice';
+import { selectPosts, setUserPostsAsync } from '../store/postsSlice';
 
 const UserProfile: React.FC = () => {
   const params = useParams();
@@ -66,7 +66,7 @@ const UserProfile: React.FC = () => {
   return (
     <Container sx={{ mt: 12, mb: 4 }} maxWidth="sm">
       {
-        user !== undefined
+        user !== null
           ? (
             <div>
               <UserCard name={user.name} username={user.username} />

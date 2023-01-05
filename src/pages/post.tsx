@@ -4,14 +4,14 @@ import { Container } from '@mui/system';
 
 import PostCard from '../components/PostCard';
 import { useAppSelector, useAppDispatch } from '../store/hooks';
-import { setPostAsync, selectPosts } from '../store/postSlice';
+import { setPostAsync, selectPost } from '../store/postSlice';
 import { useParams } from 'react-router-dom';
 
 const Post: React.FC = () => {
   const dispatch = useAppDispatch();
   const params = useParams();
   const id = Number(params["id"]);
-  const post = useAppSelector(selectPosts).post;
+  const post = useAppSelector(selectPost).post;
 
   useEffect(() => {
     dispatch(setPostAsync({ id }));
