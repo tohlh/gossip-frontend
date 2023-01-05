@@ -23,7 +23,7 @@ const PostCard = (
       {tags.map(tag =>
         <div key={tag.title}>
           <Link to={"/tag/" + tag.title} style={{ color: "inherit" }}>
-            <Chip label={tag.title} size="small" color="primary" />
+            <Chip clickable label={tag.title} size="small" color="primary" />
           </Link>
         </div>
       )}
@@ -45,7 +45,7 @@ const PostCard = (
 
         <CardContent sx={{ textAlign: "right" }}>
           <Typography variant="caption" alignSelf="right">
-            Posted by {user.username} @ {datetime} Local Time
+            Posted by {user.username} @ {datetime} SGT
           </Typography>
           <Typography variant="caption" color="warning">
             {is_edited ? " (Edited)" : ""}
