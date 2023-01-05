@@ -2,6 +2,7 @@ import '../App.css';
 import { useEffect, useState } from 'react';
 import {
   AppBar,
+  Avatar,
   Chip,
   Divider,
   Drawer,
@@ -11,21 +12,24 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  Toolbar
+  Toolbar,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { Home, MenuOutlined, Tag } from '@mui/icons-material'
 import { useAppSelector, useAppDispatch } from '../store/hooks';
 import { setTagsAsync, selectTags } from '../store/tagSlice';
+import { setCurrentUserAsync, selectUser } from '../store/userSlice';
 import logo from "../assets/logo.png"
 
 export default function NavBarDrawer() {
-  const tags = useAppSelector(selectTags).tags;
   const dispatch = useAppDispatch();
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const tags = useAppSelector(selectTags).tags;
+  const currentUser = useAppSelector(selectUser).currentUser;
   useEffect(() => {
     dispatch(setTagsAsync());
+    dispatch(setCurrentUserAsync());
   }, [dispatch]);
 
   const handleMenu = () => {
@@ -110,6 +114,7 @@ export default function NavBarDrawer() {
         >
           <MenuOutlined />
         </IconButton>
+
         <Link to="/">
           <img
             src={logo}
@@ -117,6 +122,8 @@ export default function NavBarDrawer() {
             height="50px"
             alt="logo" />
         </Link>
+
+        <Chip avatar={<Avatar />} label={currentUser.username} />
       </Toolbar>
     </AppBar>
   )
