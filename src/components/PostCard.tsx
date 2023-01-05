@@ -36,7 +36,10 @@ const PostCard = (
         <CardHeader align="left" title={title} />
         <Divider />
         <CardContent sx={{ textAlign: "left" }}>
-          <Typography variant="body1">{content}</Typography>
+          <Typography
+            sx={{ whiteSpace: "pre-line" }}
+            variant="body1"
+          >{content}</Typography>
         </CardContent>
 
         <CardContent sx={{ alignContent: "right" }}>
