@@ -2,7 +2,7 @@ import axios from "axios";
 import { removeAuthToken } from "../utils/auth";
 
 export const apiClient = axios.create({
-  baseURL: "http://192.168.1.28:3000",
+  baseURL: "https://gossip-api.onrender.com",
   headers: {
     "Content-type": "application/json",
     Accept: "application/json",
