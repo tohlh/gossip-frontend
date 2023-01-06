@@ -72,7 +72,7 @@ const Post: React.FC = () => {
         <CardActions
           sx={{
             display: "flex",
-            justifyContent: "flex-end"
+            justifyContent: "center"
           }}
         >
           <Button
