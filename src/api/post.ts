@@ -1,4 +1,4 @@
-import { authClientGet, authClientPost } from "../api";
+import { authClientGet, authClientPost, authClientPatch } from "../api";
 import { getAuthToken } from "../utils/auth";
 
 export type post = {
@@ -35,6 +35,14 @@ export const createPost = (title: string, content: string, tags: string[]) => {
     content: content,
     tags: tags,
   });
+}
+
+export const editPost = (id: number, title: string, content: string) => {
+  const token = getAuthToken();
+  return authClientPatch(token, "/post/?id=" + id, {
+    title: title,
+    content: content,
+  })
 }
 
 export const getUserPosts = (username: string | null, start: number, length: number) => {

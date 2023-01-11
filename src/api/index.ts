@@ -34,3 +34,16 @@ export const authClientPost = (token: string | null, path: string, params = {}) 
       return null;
     });
 }
+
+export const authClientPatch = (token: string | null, path: string, params = {}) => {
+  apiClient.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  return apiClient.patch(path, params)
+    .then(r => r)
+    .catch(e => {
+      if (e.response.status === 401) {
+        removeAuthToken();
+        window.location.reload();
+      }
+      return null;
+    });
+}

@@ -7,6 +7,7 @@ import Layout from './pages/layout';
 import Post from './pages/post';
 import Posts from './pages/posts';
 import AddPost from './pages/addPost';
+import EditPost from './pages/editPost';
 import UserProfile from './pages/userProfile';
 
 export default function Router() {
@@ -20,6 +21,7 @@ export default function Router() {
           <Route index element={<Posts />} />
           <Route path="/post/create" element={<AddPost />} />
           <Route path="/post/:id" element={<Post />} />
+          <Route path="/post/edit/:id" element={<EditPost />} />
           <Route path="/tag/:tag" element={<Posts />} />
           <Route path="/user/:username" element={<UserProfile />} />
         </Route>
