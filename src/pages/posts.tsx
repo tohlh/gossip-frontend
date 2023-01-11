@@ -45,7 +45,7 @@ const Posts: React.FC = () => {
   return (
     <Container sx={{ mt: 12, mb: 4 }} maxWidth="sm" >
       {
-        tag ? <h1>Posts with tag: #{tag}</h1> : <></>
+        tag && <h1>Posts with tag: #{tag}</h1>
       }
 
       <Grid container spacing={3} flex="true" direction="row">
