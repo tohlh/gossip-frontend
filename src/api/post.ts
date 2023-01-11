@@ -1,4 +1,4 @@
-import { authClientGet, authClientPost, authClientPatch } from "../api";
+import { authClientGet, authClientPost, authClientPatch, authClientDelete } from "../api";
 import { getAuthToken } from "../utils/auth";
 
 export type post = {
@@ -42,7 +42,12 @@ export const editPost = (id: number, title: string, content: string) => {
   return authClientPatch(token, "/post/?id=" + id, {
     title: title,
     content: content,
-  })
+  });
+}
+
+export const deletePost = (id: number) => {
+  const token = getAuthToken();
+  return authClientDelete(token, "/post/?id=" + id, {});
 }
 
 export const getUserPosts = (username: string | null, start: number, length: number) => {

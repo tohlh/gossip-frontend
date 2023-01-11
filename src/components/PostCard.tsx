@@ -1,7 +1,8 @@
 import moment from "moment"
-import { Link } from "react-router-dom";
-import { Card, CardContent, CardHeader, Chip, Divider, Typography } from "@mui/material";
-import { post } from "../api/post";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Card, CardContent, CardHeader, Chip, Divider, IconButton, Typography } from "@mui/material";
+import { Edit, Delete } from "@mui/icons-material"
+import { post, deletePost } from "../api/post";
 import { Stack } from "@mui/system";
 
 const PostCard = (
@@ -16,7 +17,23 @@ const PostCard = (
   }: post
 ) => {
   moment.locale("en-SG");
+  const navigate = useNavigate();
+  const location = useLocation();
   const datetime = moment(created_at).format("YYYY/MM/DD, HH:mm");
+
+  const handleDelete = (id: number) => (event: any) => {
+    const currentPath = location.pathname;
+    const redirectPath = currentPath === "/" || currentPath.startsWith("/user") ? currentPath : "/";
+    event.preventDefault();
+    deletePost(id)
+      .then(r => {
+        window.alert("Post deleted!");
+        navigate(redirectPath);
+        window.location.reload();
+      })
+      .catch()
+  }
+
   const tag_chips = (
     <Stack spacing={1} direction="row" sx={{ overflow: "auto" }}>
       {tags.map(tag =>
@@ -44,6 +61,24 @@ const PostCard = (
         <CardContent sx={{ textDecoration: 'none', alignContent: "right" }}>
           {tag_chips}
         </CardContent>
+
+        {is_op && (
+          <CardContent
+            sx={{ textDecoration: 'none', textAlign: "right" }}>
+            <IconButton
+              size="small"
+              component={Link}
+              to={"/post/edit/" + id}
+            >
+              <Edit />
+            </IconButton>
+            <IconButton
+              onClick={handleDelete(id)}
+              size="small">
+              <Delete />
+            </IconButton>
+          </CardContent>
+        )}
 
         <CardContent sx={{ textDecoration: 'none', textAlign: "right" }}>
           <Typography variant="caption" alignSelf="right">
