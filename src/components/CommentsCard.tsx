@@ -1,5 +1,5 @@
 import moment from "moment"
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Card, CardContent, CardHeader, Divider, IconButton, Typography } from "@mui/material";
 import { Edit, Delete } from "@mui/icons-material"
 import { comment, deleteComment } from "../api/comment";
@@ -18,6 +18,7 @@ const CommentsCard = (
       .catch()
   }
 
+  const location = useLocation();
   return (
     <div>
       <Card elevation={5} sx={{ mt: 3, borderRadius: 4 }}>
@@ -37,6 +38,9 @@ const CommentsCard = (
                 sx={{ textDecoration: 'none', textAlign: "right" }}>
                 <IconButton
                   size="small"
+                  component={Link}
+                  to={"/comment/edit/"}
+                  state={{ id: comment.id, content: comment.content, redirect: location.pathname }}
                 >
                   <Edit />
                 </IconButton>

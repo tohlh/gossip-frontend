@@ -9,6 +9,7 @@ import Posts from './pages/posts';
 import AddPost from './pages/addPost';
 import EditPost from './pages/editPost';
 import UserProfile from './pages/userProfile';
+import EditComment from './pages/editComment';
 
 export default function Router() {
   return (
@@ -22,6 +23,7 @@ export default function Router() {
           <Route path="/post/create" element={<AddPost />} />
           <Route path="/post/:id" element={<Post />} />
           <Route path="/post/edit/:id" element={<EditPost />} />
+          <Route path="/comment/edit/" element={<EditComment />} />
           <Route path="/tag/:tag" element={<Posts />} />
           <Route path="/user/:username" element={<UserProfile />} />
         </Route>
