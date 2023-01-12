@@ -1,13 +1,22 @@
 import moment from "moment"
 import { Link } from "react-router-dom";
-import { Card, CardContent, CardHeader, Divider, Typography } from "@mui/material";
-import { comment } from "../api/comment";
+import { Card, CardContent, CardHeader, Divider, IconButton, Typography } from "@mui/material";
+import { Edit, Delete } from "@mui/icons-material"
+import { comment, deleteComment } from "../api/comment";
 
 const CommentsCard = (
   props: { comments: comment[] }
 ) => {
   moment.locale("en-SG");
-  // const datetime = moment(created_at).format("YYYY/MM/DD, HH:mm");
+  const handleDelete = (id: number) => (event: any) => {
+    event.preventDefault();
+    deleteComment(id)
+      .then(r => {
+        window.alert("Comment deleted!");
+        window.location.reload();
+      })
+      .catch()
+  }
 
   return (
     <div>
@@ -22,6 +31,22 @@ const CommentsCard = (
                 variant="body1"
               >{comment.content}</Typography>
             </CardContent>
+
+            {comment.is_op && (
+              <CardContent
+                sx={{ textDecoration: 'none', textAlign: "right" }}>
+                <IconButton
+                  size="small"
+                >
+                  <Edit />
+                </IconButton>
+                <IconButton
+                  onClick={handleDelete(comment.id)}
+                  size="small">
+                  <Delete />
+                </IconButton>
+              </CardContent>
+            )}
 
             <CardContent sx={{ textDecoration: 'none', textAlign: "right" }}>
               <Typography variant="caption" alignSelf="right">

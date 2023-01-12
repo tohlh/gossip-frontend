@@ -1,4 +1,4 @@
-import { authClientGet, authClientPost } from "../api";
+import { authClientDelete, authClientGet, authClientPost } from "../api";
 import { getAuthToken } from "../utils/auth";
 
 export type comment = {
@@ -22,5 +22,10 @@ export const addComment = (post_id: number, content: string) => {
   return authClientPost(token, "/comment/", {
     post_id: post_id,
     content: content,
-  })
+  });
+}
+
+export const deleteComment = (id: number) => {
+  const token = getAuthToken();
+  return authClientDelete(token, "/comment/?id=" + id, {});
 }
