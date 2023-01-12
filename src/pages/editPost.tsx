@@ -59,7 +59,7 @@ const EditPost: React.FC = () => {
           placeholder="Content"
           fullWidth
           multiline
-          onChange={e => { setContent(e.target.value); console.log(content); }}
+          onChange={e => { setContent(e.target.value); }}
           inputProps={{
             style: { height: 100 }
           }}
