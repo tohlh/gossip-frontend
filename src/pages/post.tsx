@@ -29,10 +29,10 @@ const Post: React.FC = () => {
   const handleSubmitComment = () => {
     addComment(id, comment)
       .then(r => {
-        window.alert("Posted successfully!");
+        window.alert("Added successfully!");
+        window.location.reload();
       })
       .catch()
-    window.location.reload();
   }
 
   return (
