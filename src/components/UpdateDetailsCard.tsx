@@ -4,7 +4,7 @@ import { useAppSelector } from '../store/hooks';
 import { selectCurrentUser } from '../store/currentUserSlice';
 import { Button, Box, TextField, Typography, Card, CardContent } from '@mui/material';
 
-const UpdateDetailsCard = () => {
+const UpdateDetailsCard: React.FC = () => {
   const currentUser = useAppSelector(selectCurrentUser).currentUser;
   const [name, setName] = useState('');
   const [username, setUsername] = useState('');
