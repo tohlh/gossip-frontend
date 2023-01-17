@@ -9,7 +9,7 @@ export const apiClient = axios.create({
   }
 });
 
-export const authClientGet = (token: string | null, path: string, params = {}) => {
+export const authClientGet = (token: string, path: string, params = {}) => {
   apiClient.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   return apiClient.get(path, { params: params })
     .then(r => r)
@@ -22,17 +22,17 @@ export const authClientGet = (token: string | null, path: string, params = {}) =
     });
 }
 
-export const authClientPost = (token: string | null, path: string, params = {}) => {
+export const authClientPost = (token: string, path: string, params = {}) => {
   apiClient.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   return apiClient.post(path, params);
 }
 
-export const authClientPatch = (token: string | null, path: string, params = {}) => {
+export const authClientPatch = (token: string, path: string, params = {}) => {
   apiClient.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   return apiClient.patch(path, params);
 }
 
-export const authClientDelete = (token: string | null, path: string, params = {}) => {
+export const authClientDelete = (token: string, path: string, params = {}) => {
   apiClient.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   return apiClient.delete(path, params);
 }
