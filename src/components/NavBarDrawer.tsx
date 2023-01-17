@@ -148,6 +148,8 @@ export default function NavBarDrawer() {
         </MenuItem>
         <MenuItem
           onClick={handleUserMenuClose}
+          component={Link}
+          to={"/account"}
           sx={{ color: 'inherit' }}
         >
           Account Settings
