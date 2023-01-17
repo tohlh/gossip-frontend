@@ -24,39 +24,15 @@ export const authClientGet = (token: string | null, path: string, params = {}) =
 
 export const authClientPost = (token: string | null, path: string, params = {}) => {
   apiClient.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-  return apiClient.post(path, params)
-    .then(r => r)
-    .catch(e => {
-      if (e.response.status === 401) {
-        removeAuthToken();
-        window.location.reload();
-      }
-      return null;
-    });
+  return apiClient.post(path, params);
 }
 
 export const authClientPatch = (token: string | null, path: string, params = {}) => {
   apiClient.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-  return apiClient.patch(path, params)
-    .then(r => r)
-    .catch(e => {
-      if (e.response.status === 401) {
-        removeAuthToken();
-        window.location.reload();
-      }
-      return null;
-    });
+  return apiClient.patch(path, params);
 }
 
 export const authClientDelete = (token: string | null, path: string, params = {}) => {
   apiClient.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-  return apiClient.delete(path, params)
-    .then(r => r)
-    .catch(e => {
-      if (e.response.status === 401) {
-        removeAuthToken();
-        window.location.reload();
-      }
-      return null;
-    });
+  return apiClient.delete(path, params);
 }
