@@ -22,7 +22,7 @@ const Signup: React.FC = () => {
         navigate("/login");
       })
       .catch(e => {
-        setsignupError(e.response.data.error);
+        setsignupError(e.response.data.errors.join("\n"));
       })
   }
 
@@ -40,7 +40,10 @@ const Signup: React.FC = () => {
           height="100px"
           alt="logo" />
         <p>Sign up with your name, username and password</p>
-        <Typography color="error"> {signupError} </ Typography>
+        <Typography
+          sx={{ whiteSpace: "pre-line" }}
+          color="error"
+        > {signupError} </ Typography>
         <TextField
           margin="normal"
           required
