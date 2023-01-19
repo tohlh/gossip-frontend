@@ -1,4 +1,4 @@
-import { authClientPatch } from "."
+import { authClientPatch, authClientPost } from "."
 import { getAuthToken } from "../utils/auth";
 
 export const updateDetails = (name: string, username: string) => {
@@ -15,5 +15,12 @@ export const updatePassword = (current_password: string, password: string, passw
     current_password: current_password,
     password: password,
     password_confirmation: password_confirm
+  })
+}
+
+export const deleteAccount = (password: string) => {
+  const token = getAuthToken();
+  return authClientPost(token, "/account/delete", {
+    password: password
   })
 }
