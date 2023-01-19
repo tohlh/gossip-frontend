@@ -16,7 +16,6 @@ const UpdatePasswordCard: React.FC = () => {
         window.location.reload();
       })
       .catch(e => {
-        console.log(passwordConfirm);
         setSubmitError(e.response.data.error);
       })
   }
