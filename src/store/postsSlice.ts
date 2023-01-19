@@ -43,8 +43,8 @@ export const postsSlice = createSlice({
       })
       .addCase(setPostsAsync.fulfilled, (state, action) => {
         state.status = 'idle';
-        state.hasMore = action.payload.length < 10 ? false : true;
         state.posts = action.payload;
+        state.hasMore = action.payload.length >= 10;
       })
       .addCase(setPostsAsync.rejected, (state) => {
         state.status = 'failed';
@@ -55,7 +55,7 @@ export const postsSlice = createSlice({
       .addCase(setMorePostsAsync.fulfilled, (state, action) => {
         state.status = 'idle';
         state.posts = state.hasMore ? state.posts.concat(action.payload) : state.posts;
-        state.hasMore = action.payload.length < 10 ? false : true;
+        state.hasMore = action.payload.length >= 10;
       })
       .addCase(setMorePostsAsync.rejected, (state) => {
         state.status = 'failed';
