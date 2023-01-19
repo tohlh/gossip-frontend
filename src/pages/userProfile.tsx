@@ -22,7 +22,7 @@ const UserProfile: React.FC = () => {
     dispatch(setUserPostsAsync({ username: username, start: 0, length: 10 }));
   }, [dispatch, username]);
 
-  const posts_list = posts.map(post =>
+  const posts_list = posts.posts.map(post =>
     <Grid item key={post.id} xs={12}>
       <CardActionArea
         sx={{ borderRadius: 4 }}
