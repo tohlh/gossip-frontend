@@ -32,7 +32,7 @@ const AddPost: React.FC = () => {
   const handleTagAdd = (tag: string) => () => {
     const regex = /^([_a-z0-9]{2,20})$/;
     if (!regex.test(tag)) {
-      setPostError("Tag must be 2-20 characters of lowercase alphabets, numbers and underscores");
+      setPostError("Tag must be 2-20 characters of lowercase alphabets, numbers, underscores and without space.");
       return;
     }
 
