@@ -10,7 +10,7 @@ import AddPost from './pages/addPost';
 import EditPost from './pages/editPost';
 import UserProfile from './pages/userProfile';
 import EditComment from './pages/editComment';
-import UpdateAccount from './pages/updateAccount';
+import AccountSettings from './pages/accountSettings';
 
 export default function Router() {
   return (
@@ -27,7 +27,7 @@ export default function Router() {
           <Route path="/comment/edit/" element={<EditComment />} />
           <Route path="/tag/:tag" element={<Posts />} />
           <Route path="/user/:username" element={<UserProfile />} />
-          <Route path="/account" element={<UpdateAccount />} />
+          <Route path="/account" element={<AccountSettings />} />
         </Route>
       </Routes>
     </BrowserRouter>
