@@ -27,7 +27,7 @@ const UpdatePasswordCard: React.FC = () => {
       flexDirection: 'column',
       alignItems: 'center'
     }} component="form" onSubmit={handleSubmitPassword}>
-      <Card elevation={5} sx={{ borderRadius: 4 }}>
+      <Card elevation={5} sx={{ width: "100%", borderRadius: 4 }}>
         <CardContent>
           <h2>Change password</h2>
           <Typography color="error"> {submitError} </ Typography>

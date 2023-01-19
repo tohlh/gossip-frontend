@@ -35,7 +35,7 @@ const UpdateDetailsCard: React.FC = () => {
       alignItems: 'center'
     }} component="form" onSubmit={handleSubmitDetails}>
       <h1>Account Settings</h1>
-      <Card elevation={5} sx={{ borderRadius: 4 }}>
+      <Card elevation={5} sx={{ width: "100%", borderRadius: 4 }}>
         <CardContent>
           <h2>Update Name and Username</h2>
           <Typography color="error"> {submitError} </ Typography>
