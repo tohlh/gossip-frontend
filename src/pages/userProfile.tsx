@@ -53,29 +53,26 @@ const UserProfile: React.FC = () => {
 
   const posts_grid = (
     <div>
-      {
-        posts_list.length > 0
-          ? (
-            <Grid
-              container
-              spacing={3}
-              sx={{ mt: 3 }}
-            >
-              {posts_list}
-            </Grid>
-          )
-          : (
-            <Grid
-              container
-              spacing={3}
-              sx={{ mt: 3, flexDirection: "column", alignItems: "center" }}
-            >
-              <Typography variant="h4">
-                {user.name} has not posted anything
-              </Typography>
-            </Grid>
-          )
-      }
+      {posts_list.length > 0 && (
+        <Grid
+          container
+          spacing={3}
+          sx={{ mt: 3 }}
+        >
+          {posts_list}
+        </Grid>
+      )}
+      {user && (
+        <Grid
+          container
+          spacing={3}
+          sx={{ mt: 3, flexDirection: "column", alignItems: "center" }}
+        >
+          <Typography variant="h4">
+            {user.name} has not posted anything
+          </Typography>
+        </Grid>
+      )}
     </div>
   )
 
@@ -88,14 +85,12 @@ const UserProfile: React.FC = () => {
     >
       <Container sx={{ mt: 12, mb: 4 }} maxWidth="sm">
         {
-          user !== null
-            ? (
-              <div>
-                <UserCard name={user.name} username={user.username} />
-                <div>{posts_grid}</div>
-              </div>
-            )
-            : <h1>User not found</h1>
+          user ? (
+            <div>
+              <UserCard name={user.name} username={user.username} />
+              <div>{posts_grid}</div>
+            </div>
+          ) : <h1>User not found</h1>
         }
       </Container>
     </InfiniteScroll>
