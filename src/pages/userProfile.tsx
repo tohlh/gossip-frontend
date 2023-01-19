@@ -62,7 +62,7 @@ const UserProfile: React.FC = () => {
           {posts_list}
         </Grid>
       )}
-      {user && (
+      {posts_list.length <= 0 && (
         <Grid
           container
           spacing={3}
