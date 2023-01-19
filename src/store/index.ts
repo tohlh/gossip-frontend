@@ -5,10 +5,12 @@ import postsReducer from "./postsSlice";
 import postReducer from "./postSlice";
 import commentsReducer from "./commentsSlice";
 import tagsReducer from "./tagSlice";
+import userPostsReducer from "./userPostsSlice";
 
 export const store = configureStore({
   reducer: {
     user: userReducer,
+    userPosts: userPostsReducer,
     currentUser: currentUserReducer,
     posts: postsReducer,
     post: postReducer,
