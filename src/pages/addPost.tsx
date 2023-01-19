@@ -21,7 +21,7 @@ const AddPost: React.FC = () => {
         navigate("/")
       })
       .catch(e => {
-        setPostError(e.response.data.error);
+        setPostError(e.response.data.errors.join("\n"));
       })
   }
 
@@ -78,7 +78,10 @@ const AddPost: React.FC = () => {
         alignItems: 'center'
       }} component="form" onSubmit={handleSubmit} >
         <h1>Create a new post</h1>
-        <Typography color="error"> {postError} </ Typography>
+        <Typography
+          sx={{ whiteSpace: "pre-line" }}
+          color="error"
+        > {postError} </ Typography>
         <TextField
           margin="normal"
           placeholder="Title"
