@@ -13,14 +13,15 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 const UserProfile: React.FC = () => {
   const params = useParams();
   const username = params["username"] ? params["username"] : null;
-
   const user = useAppSelector(selectUser).user;
   const posts = useAppSelector(selectUserPosts).userPosts
   const dispatch = useAppDispatch();
+
   useEffect(() => {
+    setStartIndex(10);
     window.scrollTo(0, 0);
     dispatch(setUserAsync(username));
-    dispatch(setUserPostsAsync({ username: username, start: 0, length: 10 }));
+    dispatch(setUserPostsAsync({ username: username }));
   }, [dispatch, username]);
 
   const [startIndex, setStartIndex] = useState(10);

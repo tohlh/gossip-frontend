@@ -16,9 +16,9 @@ const initialUserPostsState: userPostsState = {
 
 export const setUserPostsAsync = createAsyncThunk(
   'post/getUserPosts',
-  async (params: { username: string | null, start: number, length: number }) => {
-    const { username, start, length } = params;
-    const response = await getUserPosts(username, start, length);
+  async (params: { username: string | null }) => {
+    const { username } = params;
+    const response = await getUserPosts(username, 0, 10);
     return response ? response.data : null;
   }
 );

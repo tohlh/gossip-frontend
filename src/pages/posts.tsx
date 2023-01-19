@@ -12,11 +12,11 @@ import InfiniteScroll from "react-infinite-scroll-component";
 const Posts: React.FC = () => {
   const dispatch = useAppDispatch();
   const params = useParams();
-
   const posts = useAppSelector(selectPosts).posts;
   const tag = params["tag"] ? params["tag"] : null;
 
   useEffect(() => {
+    setStartIndex(10);
     dispatch(setPostsAsync({ tag: tag }));
     window.scrollTo(0, 0);
   }, [dispatch, tag]);
