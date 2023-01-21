@@ -3,7 +3,6 @@ import { addComment } from '../api/comment';
 import { Button, Card, CardActions, CardHeader, TextField } from '@mui/material';
 
 const AddCommentCard: React.FC<{ id: number }> = ({ id }) => {
-
   const [comment, setComment] = useState('');
 
   const handleSubmitComment = () => {
@@ -12,7 +11,9 @@ const AddCommentCard: React.FC<{ id: number }> = ({ id }) => {
         window.alert("Added successfully!");
         window.location.reload();
       })
-      .catch()
+      .catch(e => {
+        window.alert(e);
+      })
   }
 
   return (
