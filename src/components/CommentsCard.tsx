@@ -15,7 +15,9 @@ const CommentsCard = (
         window.alert("Comment deleted!");
         window.location.reload();
       })
-      .catch()
+      .catch(e => {
+        window.alert(e);
+      })
   }
 
   const location = useLocation();
