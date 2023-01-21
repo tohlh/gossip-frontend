@@ -1,20 +1,17 @@
 import '../App.css';
-import React, { useEffect, useState } from 'react';
-import { Button, Card, CardActions, CardHeader, Divider, TextField } from '@mui/material';
+import React, { useEffect } from 'react';
 import { Container } from '@mui/system';
 import PostCard from '../components/PostCard';
 import CommentsCard from '../components/CommentsCard';
-import { addComment } from '../api/comment';
 import { useAppSelector, useAppDispatch } from '../store/hooks';
 import { setPostAsync, selectPost } from '../store/postSlice';
 import { setCommentsAsync, selectComments } from '../store/commentsSlice';
 import { useParams } from 'react-router-dom';
+import AddCommentCard from '../components/addCommentCard';
 
 const Post: React.FC = () => {
   const params = useParams();
   const id = Number(params["id"]);
-
-  const [comment, setComment] = useState('');
 
   const dispatch = useAppDispatch();
   const post = useAppSelector(selectPost).post;
@@ -25,15 +22,6 @@ const Post: React.FC = () => {
     dispatch(setPostAsync({ id }));
     window.scrollTo(0, 0);
   }, [dispatch, id]);
-
-  const handleSubmitComment = () => {
-    addComment(id, comment)
-      .then(r => {
-        window.alert("Added successfully!");
-        window.location.reload();
-      })
-      .catch()
-  }
 
   return (
     <Container sx={{ mt: 12, mb: 4 }} maxWidth="sm" >
@@ -53,35 +41,7 @@ const Post: React.FC = () => {
             />
           )
       }
-      <Card
-        elevation={5}
-        sx={{ mt: 3, mb: 3, borderRadius: 4, textAlign: "left" }}
-      >
-        <CardHeader title="Add Comment" />
-        <Divider />
-        <TextField
-          margin="normal"
-          placeholder="Content"
-          fullWidth
-          multiline
-          inputProps={{
-            style: { height: 100 }
-          }}
-          onChange={e => setComment(e.target.value)}
-        />
-        <CardActions
-          sx={{
-            display: "flex",
-            justifyContent: "center"
-          }}
-        >
-          <Button
-            variant="contained"
-            onClick={handleSubmitComment}
-          > Add</Button>
-        </CardActions>
-      </Card>
-
+      <AddCommentCard id={id} />
       {
         comments.length > 0 &&
         <CommentsCard comments={comments} />
