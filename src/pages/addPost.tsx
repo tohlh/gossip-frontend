@@ -1,6 +1,7 @@
 import '../App.css';
 import React, { useState } from 'react';
 import { Button, Box, Chip, Grid, Stack, TextField, Typography } from '@mui/material';
+import { Tag } from "@mui/icons-material"
 import { Container } from '@mui/system';
 import { createPost } from '../api/post';
 import { useNavigate } from 'react-router-dom';
@@ -59,8 +60,8 @@ const AddPost: React.FC = () => {
         <div key={tag}>
           <Chip
             onDelete={handleTagDelete(tag)}
-            clickable
-            label={"#" + tag}
+            icon={<Tag />}
+            label={tag}
             size="small"
             color="primary"
           />
