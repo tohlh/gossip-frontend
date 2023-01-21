@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { addComment } from '../api/comment';
-import { Button, Card, CardActions, CardHeader, Divider, TextField } from '@mui/material';
+import { Button, Card, CardActions, CardHeader, TextField } from '@mui/material';
 
 const AddCommentCard: React.FC<{ id: number }> = ({ id }) => {
 
@@ -21,15 +21,12 @@ const AddCommentCard: React.FC<{ id: number }> = ({ id }) => {
       sx={{ mt: 3, mb: 3, borderRadius: 4, textAlign: "left" }}
     >
       <CardHeader title="Add Comment" />
-      <Divider />
       <TextField
-        margin="normal"
-        placeholder="Content"
         fullWidth
+        rows="5"
+        margin="none"
+        placeholder="Content"
         multiline
-        inputProps={{
-          style: { height: 100 }
-        }}
         onChange={e => setComment(e.target.value)}
       />
       <CardActions
