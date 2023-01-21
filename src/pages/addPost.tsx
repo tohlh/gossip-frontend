@@ -92,12 +92,10 @@ const AddPost: React.FC = () => {
         <TextField
           margin="normal"
           placeholder="Content"
+          rows="5"
           fullWidth
           multiline
           onChange={e => setContent(e.target.value)}
-          inputProps={{
-            style: { height: 100 }
-          }}
         />
         {tag_chips}
         <Grid container sx={{ justifyContent: "space-between" }}>
