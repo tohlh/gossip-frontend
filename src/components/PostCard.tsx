@@ -1,7 +1,7 @@
 import moment from "moment"
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Card, CardContent, CardHeader, Chip, Divider, IconButton, Typography } from "@mui/material";
-import { Edit, Delete } from "@mui/icons-material"
+import { Edit, Delete, Tag } from "@mui/icons-material"
 import { post, deletePost } from "../api/post";
 import { Stack } from "@mui/system";
 
@@ -39,7 +39,7 @@ const PostCard = (
       {tags.map(tag =>
         <div key={tag.title}>
           <Link to={"/tag/" + tag.title} style={{ color: "inherit" }}>
-            <Chip clickable label={"#" + tag.title} size="small" color="primary" />
+            <Chip icon={<Tag />} clickable label={tag.title} size="small" color="primary" />
           </Link>
         </div>
       )}
