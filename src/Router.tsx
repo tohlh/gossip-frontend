@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import RouteGuard from './components/RouteGuard';
 import { hasAuthToken } from './utils/auth';
 import Signin from './pages/signin';
@@ -28,6 +28,7 @@ export default function Router() {
           <Route path="/tag/:tag" element={<Posts />} />
           <Route path="/user/:username" element={<UserProfile />} />
           <Route path="/account" element={<AccountSettings />} />
+          <Route path="*" element={<Navigate to={{ pathname: "/" }} />} />
         </Route>
       </Routes>
     </BrowserRouter>
