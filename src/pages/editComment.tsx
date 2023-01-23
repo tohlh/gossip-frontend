@@ -43,12 +43,10 @@ const EditComment: React.FC = () => {
           value={currContent}
           margin="normal"
           placeholder="Content"
+          rows="5"
           fullWidth
           multiline
           onChange={e => { setCurrContent(e.target.value); }}
-          inputProps={{
-            style: { height: 100 }
-          }}
         />
         <Button
           fullWidth
