@@ -43,6 +43,7 @@ const AddPost: React.FC = () => {
       setPostError("No more than 5 tags allowed");
     } else {
       setPostError("");
+      setCurrTag("");
       setTags(tags.concat(tag));
     }
   }
@@ -102,6 +103,7 @@ const AddPost: React.FC = () => {
         <Grid container sx={{ justifyContent: "space-between" }}>
           <Grid item xs={8}>
             <TextField
+              value={currTag}
               margin="normal"
               placeholder="Tag"
               fullWidth
