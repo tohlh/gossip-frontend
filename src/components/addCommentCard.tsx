@@ -3,8 +3,12 @@ import { addComment } from '../api/comment';
 import { Button, Card, CardActions, CardHeader, TextField } from '@mui/material';
 
 const AddCommentCard: React.FC<{ id: number }> = ({ id }) => {
+  // use React state to store the comment
   const [comment, setComment] = useState('');
 
+  /* Submit the comment to the server. Reload once successful.
+   * Error will be shown
+   */
   const handleSubmitComment = () => {
     addComment(id, comment)
       .then(r => {

@@ -20,7 +20,7 @@ const initialState: UserState = {
 
 export const setUserAsync = createAsyncThunk(
   'user/getUser',
-  async (username: string | null) => {
+  async (username: string) => {
     const response = await getUser(username);
     return response ? response.data : null;
   }
