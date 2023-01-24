@@ -45,14 +45,14 @@ const Signin: React.FC = () => {
           required
           fullWidth
           onChange={e => setUsername(e.target.value)}
-          placeholder="Username"
+          label="Username"
         />
         <TextField
           margin="normal"
           required
           fullWidth
           onChange={e => setPassword(e.target.value)}
-          placeholder="Password"
+          label="Password"
           type="password"
         />
         <p>Don't have an account yet?</p>

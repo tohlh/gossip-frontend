@@ -30,7 +30,7 @@ const AddCommentCard: React.FC<{ id: number }> = ({ id }) => {
         fullWidth
         rows="5"
         margin="none"
-        placeholder="Content"
+        label="Comment"
         multiline
         onChange={e => setComment(e.target.value)}
       />

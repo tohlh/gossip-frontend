@@ -50,21 +50,21 @@ const Signup: React.FC = () => {
           required
           fullWidth
           onChange={e => setName(e.target.value)}
-          placeholder="Name"
+          label="Name"
         />
         <TextField
           margin="normal"
           required
           fullWidth
           onChange={e => setUsername(e.target.value)}
-          placeholder="Username"
+          label="Username"
         />
         <TextField
           margin="normal"
           required
           fullWidth
           onChange={e => setPassword(e.target.value)}
-          placeholder="Password"
+          label="Password"
           type="password"
         />
         <TextField
@@ -72,7 +72,7 @@ const Signup: React.FC = () => {
           required
           fullWidth
           onChange={e => setPasswordConfirm(e.target.value)}
-          placeholder="Confirm Password"
+          label="Confirm Password"
           type="password"
         />
         <p>Already have an account?</p>

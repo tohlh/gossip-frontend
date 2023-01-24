@@ -57,7 +57,7 @@ const EditPost: React.FC = () => {
         <TextField
           value={title}
           margin="normal"
-          placeholder="Title"
+          label="Title"
           required
           fullWidth
           onChange={e => setTitle(e.target.value)}
@@ -65,7 +65,7 @@ const EditPost: React.FC = () => {
         <TextField
           value={content}
           margin="normal"
-          placeholder="Content"
+          label="Content"
           rows="5"
           fullWidth
           multiline

@@ -48,7 +48,7 @@ const UpdateDetailsCard: React.FC = () => {
             required
             fullWidth
             onChange={e => setName(e.target.value)}
-            placeholder="Name"
+            label="Name"
           />
           <TextField
             value={username}
@@ -56,7 +56,7 @@ const UpdateDetailsCard: React.FC = () => {
             required
             fullWidth
             onChange={e => setUsername(e.target.value)}
-            placeholder="Username"
+            label="Username"
           />
           <Button
             fullWidth

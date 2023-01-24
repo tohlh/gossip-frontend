@@ -39,7 +39,7 @@ const DeleteAccountCard: React.FC = () => {
             fullWidth
             color="warning"
             onChange={e => setPassword(e.target.value)}
-            placeholder="Current Password"
+            label="Password"
             type="password"
           />
           <Button

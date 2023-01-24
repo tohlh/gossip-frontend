@@ -37,7 +37,7 @@ const UpdatePasswordCard: React.FC = () => {
             required
             fullWidth
             onChange={e => setCurrentPassword(e.target.value)}
-            placeholder="Current Password"
+            label="Current Password"
             type="password"
           />
           <TextField
@@ -45,7 +45,7 @@ const UpdatePasswordCard: React.FC = () => {
             required
             fullWidth
             onChange={e => setPassword(e.target.value)}
-            placeholder="Password"
+            label="Password"
             type="password"
           />
           <TextField
@@ -53,7 +53,7 @@ const UpdatePasswordCard: React.FC = () => {
             required
             fullWidth
             onChange={e => setPasswordConfirm(e.target.value)}
-            placeholder="Confirm Password"
+            label="Confirm Password"
             type="password"
           />
           <Button

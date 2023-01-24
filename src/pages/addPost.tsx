@@ -89,14 +89,14 @@ const AddPost: React.FC = () => {
         > {postError} </ Typography>
         <TextField
           margin="normal"
-          placeholder="Title"
+          label="Title"
           required
           fullWidth
           onChange={e => setTitle(e.target.value)}
         />
         <TextField
           margin="normal"
-          placeholder="Content"
+          label="Content"
           rows="5"
           fullWidth
           multiline
@@ -108,7 +108,7 @@ const AddPost: React.FC = () => {
             <TextField
               value={currTag}
               margin="normal"
-              placeholder="Tag"
+              label="Tag"
               fullWidth
               onChange={e => setCurrTag(e.target.value)}
             />

@@ -48,7 +48,7 @@ const EditComment: React.FC = () => {
         <TextField
           value={currContent}
           margin="normal"
-          placeholder="Content"
+          label="Content"
           rows="5"
           fullWidth
           multiline
