@@ -5,16 +5,22 @@ import { Container } from '@mui/system';
 import { editComment } from '../api/comment';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+// This page is used for editing comments
+// Comment data is passed using location.state
 const EditComment: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { id, content, redirect } = location.state ? location.state : { id: "", content: "", redirect: "" };
+
+  // This handles the illegal visit of edit comment page
+  const { id, content, redirect } = location.state ? location.state : { id: null, content: "", redirect: "" };
   const [currContent, setCurrContent] = useState(content);
   const [postError, setPostError] = useState('');
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    if (id === "") { navigate("/"); }
+    // Redirects to home page if this page is being visited illegally, 
+    // i.e. not through pressing edit button of a comment
+    if (!id) { navigate("/"); }
   }, [id, navigate]);
 
   const handleSubmit = (event: any) => {

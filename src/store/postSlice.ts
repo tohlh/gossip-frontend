@@ -14,7 +14,7 @@ const initialPostState: postState = {
 
 export const setPostAsync = createAsyncThunk(
   'post/getPost',
-  async (params: { id: number | null }) => {
+  async (params: { id: number }) => {
     const { id } = params;
     const response = await getPost(id);
     return response ? response.data : null;

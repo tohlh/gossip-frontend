@@ -21,7 +21,7 @@ export const getPosts = (start: number, length: number, tag: string | null) => {
   });
 }
 
-export const getPost = (id: number | null) => {
+export const getPost = (id: number) => {
   const token = getAuthToken();
   return authClientGet(token, "/post/", {
     id: id
