@@ -24,6 +24,7 @@ import { setCurrentUserAsync, selectCurrentUser } from '../store/currentUserSlic
 import logo from "../assets/logo.png"
 import { removeAuthToken } from '../utils/auth';
 
+// This is the main navigation bar and drawer. The drawer shows a home button and top 20 tags.
 export default function NavBarDrawer() {
   const [tagMenuOpen, setTagMenuOpen] = useState(false);
   const [userMenuAnchor, setUserMenuAnchor] = useState<null | HTMLElement>(null);
@@ -53,6 +54,7 @@ export default function NavBarDrawer() {
     window.location.reload();
   }
 
+  // To show top 20 tags
   const tags_menu = (
     <div>
       <List sx={{ width: "100%", maxWidth: 280, mt: 10 }}>
@@ -92,6 +94,11 @@ export default function NavBarDrawer() {
     </div>
   )
 
+  /* Drawer shows home button and top 20 tags.
+   * There are two drawers being implemented here, one is for mobile, one is for desktop.
+   * Depending on the device being used, the appropriate one will be displayed 
+   * while the other one is hidden.
+   */
   const drawer = (
     <div>
       <Drawer variant="permanent"
@@ -122,6 +129,7 @@ export default function NavBarDrawer() {
     </div>
   )
 
+  // User menu appears upon clicking the user avatar, will lead to profile, account settings and logout
   const user_menu = (
     <div>
       <Menu
@@ -164,6 +172,7 @@ export default function NavBarDrawer() {
     </div>
   )
 
+  // Clickable user avatar that shows user_menu upon clicking
   const user_avatar = (
     <div>
       <IconButton sx={{ borderRadius: 0 }} onClick={handleUserMenuOpen}>
@@ -173,6 +182,7 @@ export default function NavBarDrawer() {
     </div>
   )
 
+  // Toolbar that shows hamburger menu (only in mobile mode), site logo and user avatar
   const toolbar = (
     <AppBar>
       <Toolbar sx={{ justifyContent: "space-between" }}>

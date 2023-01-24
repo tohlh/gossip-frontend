@@ -5,6 +5,9 @@
 
 import { Navigate } from 'react-router-dom';
 
+/* RouteGuard will return element when pred is true, will redirect to another route otherwise
+ * This is mainly used for authentication
+ */
 const RouteGuard = (
   { pred, element, redirect }: { pred: boolean, element: JSX.Element, redirect: string }
 ) => {

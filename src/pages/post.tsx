@@ -9,6 +9,7 @@ import { setCommentsAsync, selectComments } from '../store/commentsSlice';
 import { useParams } from 'react-router-dom';
 import AddCommentCard from '../components/addCommentCard';
 
+// This page shows one post and its comments
 const Post: React.FC = () => {
   const params = useParams();
   const id = Number(params["id"]);

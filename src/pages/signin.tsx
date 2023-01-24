@@ -6,6 +6,7 @@ import { login } from '../api/auth';
 import { setAuthToken } from '../utils/auth';
 import logo from "../assets/logo.png";
 
+// Sign in page
 const Signin: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

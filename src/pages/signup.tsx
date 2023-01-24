@@ -6,6 +6,7 @@ import { signup } from '../api/auth';
 import { useNavigate } from 'react-router-dom';
 import logo from "../assets/logo.png";
 
+// Sign up page. After a user signs up, they will be directed to login.
 const Signup: React.FC = () => {
   const [name, setName] = useState('');
   const [username, setUsername] = useState('');

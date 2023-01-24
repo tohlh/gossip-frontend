@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { updatePassword } from '../api/account';
 import { Button, Box, TextField, Typography, Card, CardContent } from '@mui/material';
 
+// This card allows user to update their password. Will be used in AccountSettings page.
 const UpdatePasswordCard: React.FC = () => {
   const [currentPassword, setCurrentPassword] = useState('');
   const [password, setPassword] = useState('');

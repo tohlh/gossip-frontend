@@ -9,6 +9,8 @@ import { setPostsAsync, setMorePostsAsync, selectPosts } from '../store/postsSli
 import { useParams } from 'react-router-dom';
 import InfiniteScroll from "react-infinite-scroll-component";
 
+// Shows all posts or posts with a particular tag
+// Infinite scrolling is implemented and 10 posts are fetched per update
 const Posts: React.FC = () => {
   const dispatch = useAppDispatch();
   const params = useParams();

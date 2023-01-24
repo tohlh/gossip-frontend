@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { deleteAccount } from '../api/account';
 import { Button, Box, TextField, Typography, Card, CardContent } from '@mui/material';
 
+// This card allows the user to delete their account. It will be used in AccountSettings page
 const DeleteAccountCard: React.FC = () => {
+  // Password is required.
   const [password, setPassword] = useState('');
   const [submitError, setSubmitError] = useState('');
 
@@ -14,6 +16,7 @@ const DeleteAccountCard: React.FC = () => {
         window.location.reload();
       })
       .catch(e => {
+        // Error message will be shown on the card
         setSubmitError(e.response.data.error);
       })
   }

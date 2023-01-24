@@ -4,13 +4,16 @@ import { useAppSelector } from '../store/hooks';
 import { selectCurrentUser } from '../store/currentUserSlice';
 import { Button, Box, TextField, Typography, Card, CardContent } from '@mui/material';
 
+// This card allows user to change their details. Will be used in AccountSettings page
 const UpdateDetailsCard: React.FC = () => {
+  // Redux selector
   const currentUser = useAppSelector(selectCurrentUser).currentUser;
   const [name, setName] = useState('');
   const [username, setUsername] = useState('');
   const [submitError, setSubmitError] = useState('');
 
   useEffect(() => {
+    // Prefill the name and username in the form
     setName(currentUser.name);
     setUsername(currentUser.username);
   }, [currentUser])

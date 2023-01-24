@@ -14,6 +14,7 @@ const AddPost: React.FC = () => {
   const [postError, setPostError] = useState('');
   const navigate = useNavigate()
 
+  // Submit form data
   const handleSubmit = (event: any) => {
     event.preventDefault();
     createPost(title, content, tags)
@@ -26,6 +27,7 @@ const AddPost: React.FC = () => {
       })
   }
 
+  // Handling Tags that are in an array in react state
   const handleTagDelete = (tag: string) => () => {
     setTags(tags.filter(t => t !== tag));
   }
@@ -48,6 +50,7 @@ const AddPost: React.FC = () => {
     }
   }
 
+  // Displaying the tags in the array as chips
   const tag_chips = (
     <Stack
       spacing={1}

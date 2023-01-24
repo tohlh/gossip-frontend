@@ -5,6 +5,7 @@ import { Fab } from '@mui/material';
 import { Add } from '@mui/icons-material';
 import NavBarDrawer from '../components/NavBarDrawer';
 
+// The general layout of the app
 export default function Layout() {
   return (
     <div>
