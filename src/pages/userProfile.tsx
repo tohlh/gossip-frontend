@@ -1,6 +1,6 @@
 import '../App.css';
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Container } from '@mui/system';
 import { CardActionArea, Grid, Typography } from '@mui/material';
 import PostCard from '../components/PostCard';
@@ -10,18 +10,25 @@ import { setUserAsync, selectUser } from '../store/userSlice';
 import { selectUserPosts, setUserPostsAsync, setMoreUserPostsAsync } from '../store/userPostsSlice';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
+// This page shows a user profile, which inclues a user's name, username and posts.
+// Infinite scrolling is implemented and 10 posts are fetched per update
 const UserProfile: React.FC = () => {
   const params = useParams();
   const username = params["username"] ? params["username"] : null;
   const user = useAppSelector(selectUser).user;
   const posts = useAppSelector(selectUserPosts).userPosts
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setStartIndex(10);
     window.scrollTo(0, 0);
-    dispatch(setUserAsync(username));
-    dispatch(setUserPostsAsync({ username: username }));
+    if (username === null) {
+      navigate("/");
+    } else {
+      dispatch(setUserAsync(username));
+      dispatch(setUserPostsAsync({ username: username }));
+    }
   }, [dispatch, username]);
 
   const [startIndex, setStartIndex] = useState(10);
@@ -53,7 +60,7 @@ const UserProfile: React.FC = () => {
 
   const posts_grid = (
     <div>
-      {posts_list.length > 0 && (
+      {user && posts_list.length > 0 && (
         <Grid
           container
           spacing={3}
@@ -62,7 +69,7 @@ const UserProfile: React.FC = () => {
           {posts_list}
         </Grid>
       )}
-      {posts_list.length <= 0 && (
+      {user && posts_list.length <= 0 && (
         <Grid
           container
           spacing={3}

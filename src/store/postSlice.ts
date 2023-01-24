@@ -17,7 +17,7 @@ export const setPostAsync = createAsyncThunk(
   async (params: { id: number }) => {
     const { id } = params;
     const response = await getPost(id);
-    return response ? response.data : null;
+    return response.status === 404 ? null : response.data;
   }
 );
 

@@ -22,7 +22,7 @@ export const setUserAsync = createAsyncThunk(
   'user/getUser',
   async (username: string) => {
     const response = await getUser(username);
-    return response ? response.data : null;
+    return response.status === 404 ? null : response.data;
   }
 );
 

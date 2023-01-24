@@ -18,7 +18,7 @@ export const authClientGet = (token: string, path: string, params = {}) => {
         removeAuthToken();
         window.location.reload();
       }
-      return null;
+      return e.response;
     });
 }
 
