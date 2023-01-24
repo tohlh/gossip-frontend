@@ -23,8 +23,8 @@ export default function Router() {
           <Route index element={<Posts />} />
           <Route path="/post/create" element={<AddPost />} />
           <Route path="/post/:id" element={<Post />} />
-          <Route path="/post/edit/:id" element={<EditPost />} />
-          <Route path="/comment/edit/" element={<EditComment />} />
+          <Route path="/edit/post/:id" element={<EditPost />} />
+          <Route path="/edit/comment/" element={<EditComment />} />
           <Route path="/tag/:tag" element={<Posts />} />
           <Route path="/user/:username" element={<UserProfile />} />
           <Route path="/account" element={<AccountSettings />} />

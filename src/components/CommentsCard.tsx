@@ -4,10 +4,15 @@ import { Card, CardContent, CardHeader, Divider, IconButton, Typography } from "
 import { Edit, Delete } from "@mui/icons-material"
 import { comment, deleteComment } from "../api/comment";
 
+// Shows a list of comments. Will be used at post page.
 const CommentsCard = (
   props: { comments: comment[] }
 ) => {
+  // Set up date/time locale
   moment.locale("en-SG");
+  const location = useLocation();
+
+  // To delete a comment
   const handleDelete = (id: number) => (event: any) => {
     event.preventDefault();
     deleteComment(id)
@@ -20,7 +25,6 @@ const CommentsCard = (
       })
   }
 
-  const location = useLocation();
   return (
     <div>
       <Card elevation={5} sx={{ mt: 3, borderRadius: 4 }}>
@@ -35,13 +39,13 @@ const CommentsCard = (
               >{comment.content}</Typography>
             </CardContent>
 
-            {comment.is_op && (
+            {comment.is_op && ( /* Allow delete and edit when user is OP */
               <CardContent
                 sx={{ textDecoration: 'none', textAlign: "right" }}>
                 <IconButton
                   size="small"
                   component={Link}
-                  to={"/comment/edit/"}
+                  to={"/edit/comment"}
                   state={{ id: comment.id, content: comment.content, redirect: location.pathname }}
                 >
                   <Edit />
@@ -67,7 +71,7 @@ const CommentsCard = (
                 , {moment(comment.created_at).format("YYYY/MM/DD, HH:mm")} SGT
               </Typography>
               <Typography variant="caption">
-                {comment.is_edited ? " (Edited)" : ""}
+                {comment.is_edited ? " (Edited)" : "" /* Show that this post has been edited before */}
               </Typography>
             </CardContent>
             <Divider />

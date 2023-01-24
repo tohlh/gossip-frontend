@@ -21,6 +21,18 @@ const PostCard = (
   const location = useLocation();
   const datetime = moment(created_at).format("YYYY/MM/DD, HH:mm");
 
+  /* Sends a delete(id) request to the server
+   * There are three paths where a user can delete the post
+   * 1. at the posts page (home page with list of posts)
+   * 2. at the post page (single post)
+   * 3. at the user profile page
+   * 
+   * We do not want to reload the window at the (2) after deletion,
+   * because the post is gone and this URL will only result in 
+   * invalid post. Hence, we will redirect the user to the home page.
+   * 
+   * For the other cases, it is better to keep the user where they were.
+   */
   const handleDelete = (id: number) => (event: any) => {
     const currentPath = location.pathname;
     const redirectPath = currentPath === "/" || currentPath.startsWith("/user") ? currentPath : "/";
@@ -34,6 +46,7 @@ const PostCard = (
       .catch()
   }
 
+  // Display tags with Chip
   const tag_chips = (
     <Stack spacing={1} direction="row" sx={{ overflow: "auto" }}>
       {tags.map(tag =>
@@ -68,7 +81,7 @@ const PostCard = (
             <IconButton
               size="small"
               component={Link}
-              to={"/post/edit/" + id}
+              to={"/edit/post/" + id}
             >
               <Edit />
             </IconButton>
