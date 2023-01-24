@@ -29,19 +29,21 @@ const Post: React.FC = () => {
         post === null
           ? <h1> Invalid post ID </h1>
           : (
-            <PostCard
-              id={post.id}
-              title={post.title}
-              content={post.content}
-              is_edited={post.is_edited}
-              is_op={post.is_op}
-              tags={post.tags}
-              user={post.user}
-              created_at={post.created_at}
-            />
+            <div>
+              <PostCard
+                id={post.id}
+                title={post.title}
+                content={post.content}
+                is_edited={post.is_edited}
+                is_op={post.is_op}
+                tags={post.tags}
+                user={post.user}
+                created_at={post.created_at}
+              />
+              <AddCommentCard id={id} />
+            </div>
           )
       }
-      <AddCommentCard id={id} />
       {
         comments.length > 0 &&
         <CommentsCard comments={comments} />
