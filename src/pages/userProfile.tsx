@@ -29,7 +29,7 @@ const UserProfile: React.FC = () => {
       dispatch(setUserAsync(username));
       dispatch(setUserPostsAsync({ username: username }));
     }
-  }, [dispatch, username]);
+  }, [dispatch, navigate, username]);
 
   const [startIndex, setStartIndex] = useState(10);
   const fetchMoreUserPosts = () => {
