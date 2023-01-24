@@ -36,7 +36,7 @@ const EditPost: React.FC = () => {
       editPost(id, title, content)
         .then(r => {
           window.alert("Updated successfully!");
-          navigate("/");
+          navigate("/post/" + id);
         })
         .catch(e => {
           setPostError(e.response.data.error);
