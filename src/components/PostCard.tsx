@@ -1,7 +1,7 @@
-import moment from "moment"
+import moment from "moment";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Card, CardContent, CardHeader, Chip, Divider, IconButton, Typography } from "@mui/material";
-import { Edit, Delete, Tag } from "@mui/icons-material"
+import { Edit, Delete, Tag } from "@mui/icons-material";
 import { post, deletePost } from "../api/post";
 import { Stack } from "@mui/system";
 
@@ -64,20 +64,20 @@ const PostCard = (
       <Card elevation={5} sx={{ borderRadius: 4 }}>
         <CardHeader align="left" title={title} />
         <Divider />
-        <CardContent sx={{ textDecoration: 'none', textAlign: "left" }}>
+        <CardContent sx={{ textDecoration: "none", textAlign: "left" }}>
           <Typography
             sx={{ whiteSpace: "pre-line" }}
             variant="body1"
           >{content}</Typography>
         </CardContent>
 
-        <CardContent sx={{ textDecoration: 'none', alignContent: "right" }}>
+        <CardContent sx={{ textDecoration: "none", alignContent: "right" }}>
           {tag_chips}
         </CardContent>
 
         {is_op && (
           <CardContent
-            sx={{ textDecoration: 'none', textAlign: "right" }}>
+            sx={{ textDecoration: "none", textAlign: "right" }}>
             <IconButton
               size="small"
               component={Link}
@@ -93,7 +93,7 @@ const PostCard = (
           </CardContent>
         )}
 
-        <CardContent sx={{ textDecoration: 'none', textAlign: "right" }}>
+        <CardContent sx={{ textDecoration: "none", textAlign: "right" }}>
           <Typography variant="caption" alignSelf="right">
             <Typography
               sx={{ color: "inherit" }}

@@ -1,18 +1,17 @@
-import '../App.css';
-import React, { useState } from 'react';
-import { Button, Box, TextField, Typography } from '@mui/material';
-import { Container } from '@mui/system';
-import { signup } from '../api/auth';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { Button, Box, TextField, Typography } from "@mui/material";
+import { Container } from "@mui/system";
+import { signup } from "../api/auth";
+import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 
 // Sign up page. After a user signs up, they will be directed to login.
 const Signup: React.FC = () => {
-  const [name, setName] = useState('');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordConfirm, setPasswordConfirm] = useState('');
-  const [signupError, setsignupError] = useState('');
+  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [signupError, setsignupError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (event: any) => {

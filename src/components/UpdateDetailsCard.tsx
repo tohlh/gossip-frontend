@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { updateDetails } from '../api/account';
-import { useAppSelector } from '../store/hooks';
-import { selectCurrentUser } from '../store/currentUserSlice';
-import { Button, Box, TextField, Typography, Card, CardContent } from '@mui/material';
+import React, { useState, useEffect } from "react";
+import { updateDetails } from "../api/account";
+import { useAppSelector } from "../store/hooks";
+import { selectCurrentUser } from "../store/currentUserSlice";
+import { Button, Box, TextField, Typography, Card, CardContent } from "@mui/material";
 
 // This card allows user to change their details. Will be used in AccountSettings page
 const UpdateDetailsCard: React.FC = () => {
   // Redux selector
   const currentUser = useAppSelector(selectCurrentUser).currentUser;
-  const [name, setName] = useState('');
-  const [username, setUsername] = useState('');
-  const [submitError, setSubmitError] = useState('');
+  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
+  const [submitError, setSubmitError] = useState("");
 
   useEffect(() => {
     // Prefill the name and username in the form
@@ -33,9 +33,9 @@ const UpdateDetailsCard: React.FC = () => {
   return (
     <Box sx={{
       marginTop: 8,
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center'
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center"
     }} component="form" onSubmit={handleSubmitDetails}>
       <h1>Account Settings</h1>
       <Card elevation={5} sx={{ width: "100%", borderRadius: 4 }}>

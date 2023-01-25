@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { updatePassword } from '../api/account';
-import { Button, Box, TextField, Typography, Card, CardContent } from '@mui/material';
+import React, { useState } from "react";
+import { updatePassword } from "../api/account";
+import { Button, Box, TextField, Typography, Card, CardContent } from "@mui/material";
 
 // This card allows user to update their password. Will be used in AccountSettings page.
 const UpdatePasswordCard: React.FC = () => {
-  const [currentPassword, setCurrentPassword] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordConfirm, setPasswordConfirm] = useState('');
-  const [submitError, setSubmitError] = useState('');
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [submitError, setSubmitError] = useState("");
 
   const handleSubmitPassword = (event: any) => {
     event.preventDefault();
@@ -24,9 +24,9 @@ const UpdatePasswordCard: React.FC = () => {
   return (
     <Box sx={{
       marginTop: 3,
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center'
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center"
     }} component="form" onSubmit={handleSubmitPassword}>
       <Card elevation={5} sx={{ width: "100%", borderRadius: 4 }}>
         <CardContent>

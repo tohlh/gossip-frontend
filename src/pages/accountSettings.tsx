@@ -1,8 +1,8 @@
-import React from 'react';
-import { Container } from '@mui/system';
-import UpdateDetailsCard from '../components/UpdateDetailsCard';
-import UpdatePasswordCard from '../components/UpdatePasswordCard';
-import DeleteAccountCard from '../components/DeleteAccountCard';
+import React from "react";
+import { Container } from "@mui/system";
+import UpdateDetailsCard from "../components/UpdateDetailsCard";
+import UpdatePasswordCard from "../components/UpdatePasswordCard";
+import DeleteAccountCard from "../components/DeleteAccountCard";
 
 // Account settings page, allows user to change name, username, and password
 // Also allows user to delete their account

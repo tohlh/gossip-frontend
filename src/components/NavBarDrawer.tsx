@@ -1,5 +1,4 @@
-import '../App.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import {
   AppBar,
   Avatar,
@@ -15,14 +14,14 @@ import {
   Menu,
   MenuItem,
   Toolbar,
-} from '@mui/material';
-import { Link } from 'react-router-dom';
-import { Home, MenuOutlined, Tag } from '@mui/icons-material'
-import { useAppSelector, useAppDispatch } from '../store/hooks';
-import { setTagsAsync, selectTags } from '../store/tagSlice';
-import { setCurrentUserAsync, selectCurrentUser } from '../store/currentUserSlice';
-import logo from "../assets/logo.png"
-import { removeAuthToken } from '../utils/auth';
+} from "@mui/material";
+import { Link } from "react-router-dom";
+import { Home, MenuOutlined, Tag } from "@mui/icons-material";
+import { useAppSelector, useAppDispatch } from "../store/hooks";
+import { setTagsAsync, selectTags } from "../store/tagSlice";
+import { setCurrentUserAsync, selectCurrentUser } from "../store/currentUserSlice";
+import logo from "../assets/logo.png";
+import { removeAuthToken } from "../utils/auth";
 
 // This is the main navigation bar and drawer. The drawer shows a home button and top 20 tags.
 export default function NavBarDrawer() {
@@ -62,7 +61,7 @@ export default function NavBarDrawer() {
           component={Link}
           to={"/"}
           disablePadding
-          sx={{ color: 'inherit' }}
+          sx={{ color: "inherit" }}
         >
           <ListItemButton>
             <ListItemIcon>

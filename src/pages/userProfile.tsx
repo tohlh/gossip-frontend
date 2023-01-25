@@ -1,14 +1,13 @@
-import '../App.css';
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import { Container } from '@mui/system';
-import { CardActionArea, Grid, Typography } from '@mui/material';
-import PostCard from '../components/PostCard';
-import UserCard from '../components/UserCard';
-import { useAppSelector, useAppDispatch } from '../store/hooks';
-import { setUserAsync, selectUser } from '../store/userSlice';
-import { selectUserPosts, setUserPostsAsync, setMoreUserPostsAsync } from '../store/userPostsSlice';
-import InfiniteScroll from 'react-infinite-scroll-component';
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { Container } from "@mui/system";
+import { CardActionArea, Grid, Typography } from "@mui/material";
+import PostCard from "../components/PostCard";
+import UserCard from "../components/UserCard";
+import { useAppSelector, useAppDispatch } from "../store/hooks";
+import { setUserAsync, selectUser } from "../store/userSlice";
+import { selectUserPosts, setUserPostsAsync, setMoreUserPostsAsync } from "../store/userPostsSlice";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 // This page shows a user profile, which inclues a user's name, username and posts.
 // Infinite scrolling is implemented and 10 posts are fetched per update

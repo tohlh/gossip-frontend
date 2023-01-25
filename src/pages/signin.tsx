@@ -1,16 +1,16 @@
-import '../App.css';
-import React, { useState } from 'react';
-import { Button, Box, TextField, Typography } from '@mui/material';
-import { Container } from '@mui/system';
-import { login } from '../api/auth';
-import { setAuthToken } from '../utils/auth';
+import "../App.css";
+import React, { useState } from "react";
+import { Button, Box, TextField, Typography } from "@mui/material";
+import { Container } from "@mui/system";
+import { login } from "../api/auth";
+import { setAuthToken } from "../utils/auth";
 import logo from "../assets/logo.png";
 
 // Sign in page
 const Signin: React.FC = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [loginError, setLoginError] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState("");
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
@@ -28,9 +28,9 @@ const Signin: React.FC = () => {
     <Container maxWidth="xs">
       <Box sx={{
         marginTop: 8,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center'
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center"
       }}
         component="form" onSubmit={handleSubmit}>
         <img

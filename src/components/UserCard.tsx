@@ -1,4 +1,4 @@
-import { Avatar, Card, CardHeader, CardContent, Typography, Divider } from '@mui/material';
+import { Avatar, Card, CardHeader, CardContent, Typography, Divider } from "@mui/material";
 
 // This card displays a user's name and username. Will be used in UserProfile page.
 const UserCard = ({ name, username }: { name: string, username: string }) => {

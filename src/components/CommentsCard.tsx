@@ -32,7 +32,7 @@ const CommentsCard = (
         <Divider />
         {props.comments.map(comment =>
           <div>
-            <CardContent sx={{ textDecoration: 'none', textAlign: "left" }}>
+            <CardContent sx={{ textDecoration: "none", textAlign: "left" }}>
               <Typography
                 sx={{ whiteSpace: "pre-line" }}
                 variant="body1"
@@ -41,7 +41,7 @@ const CommentsCard = (
 
             {comment.is_op && ( /* Allow delete and edit when user is OP */
               <CardContent
-                sx={{ textDecoration: 'none', textAlign: "right" }}>
+                sx={{ textDecoration: "none", textAlign: "right" }}>
                 <IconButton
                   size="small"
                   component={Link}

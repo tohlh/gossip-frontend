@@ -24,9 +24,9 @@ const DeleteAccountCard: React.FC = () => {
   return (
     <Box sx={{
       marginTop: 3,
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center'
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center"
     }} component="form" onSubmit={handleSubmitDelete}>
       <Card elevation={5} sx={{ width: "100%", borderRadius: 4 }}>
         <CardContent>

@@ -1,9 +1,9 @@
-import '../App.css';
-import { Link, Outlet } from 'react-router-dom';
-import { Container } from '@mui/system';
-import { Fab } from '@mui/material';
-import { Add } from '@mui/icons-material';
-import NavBarDrawer from '../components/NavBarDrawer';
+import "../App.css";
+import { Link, Outlet } from "react-router-dom";
+import { Container } from "@mui/system";
+import { Fab } from "@mui/material";
+import { Add } from "@mui/icons-material";
+import NavBarDrawer from "../components/NavBarDrawer";
 
 // The general layout of the app
 export default function Layout() {
@@ -17,7 +17,7 @@ export default function Layout() {
           to="/post/create"
           color="primary"
           sx={{
-            position: 'fixed',
+            position: "fixed",
             bottom: 16,
             right: 16,
           }}>

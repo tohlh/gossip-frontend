@@ -1,17 +1,16 @@
-import '../App.css';
-import React, { useState } from 'react';
-import { Button, Box, Chip, Grid, Stack, TextField, Typography } from '@mui/material';
+import React, { useState } from "react";
+import { Button, Box, Chip, Grid, Stack, TextField, Typography } from "@mui/material";
 import { Tag } from "@mui/icons-material"
-import { Container } from '@mui/system';
-import { createPost } from '../api/post';
-import { useNavigate } from 'react-router-dom';
+import { Container } from "@mui/system";
+import { createPost } from "../api/post";
+import { useNavigate } from "react-router-dom";
 
 const AddPost: React.FC = () => {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
   const [tags, setTags] = useState<string[]>([]);
-  const [currTag, setCurrTag] = useState('');
-  const [postError, setPostError] = useState('');
+  const [currTag, setCurrTag] = useState("");
+  const [postError, setPostError] = useState("");
   const navigate = useNavigate()
 
   // Submit form data
@@ -78,9 +77,9 @@ const AddPost: React.FC = () => {
     <Container maxWidth="xs">
       <Box sx={{
         marginTop: 8,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center'
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center"
       }} component="form" onSubmit={handleSubmit} >
         <h1>Create a new post</h1>
         <Typography

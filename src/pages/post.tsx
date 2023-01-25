@@ -1,13 +1,12 @@
-import '../App.css';
-import React, { useEffect } from 'react';
-import { Container } from '@mui/system';
-import PostCard from '../components/PostCard';
-import CommentsCard from '../components/CommentsCard';
-import { useAppSelector, useAppDispatch } from '../store/hooks';
-import { setPostAsync, selectPost } from '../store/postSlice';
-import { setCommentsAsync, selectComments } from '../store/commentsSlice';
-import { useParams } from 'react-router-dom';
-import AddCommentCard from '../components/addCommentCard';
+import React, { useEffect } from "react";
+import { Container } from "@mui/system";
+import PostCard from "../components/PostCard";
+import CommentsCard from "../components/CommentsCard";
+import { useAppSelector, useAppDispatch } from "../store/hooks";
+import { setPostAsync, selectPost } from "../store/postSlice";
+import { setCommentsAsync, selectComments } from "../store/commentsSlice";
+import { useParams } from "react-router-dom";
+import AddCommentCard from "../components/addCommentCard";
 
 // This page shows one post and its comments
 const Post: React.FC = () => {

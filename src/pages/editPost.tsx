@@ -1,9 +1,8 @@
-import '../App.css';
-import React, { useEffect, useState } from 'react';
-import { Button, Box, TextField, Typography } from '@mui/material';
-import { Container } from '@mui/system';
-import { getPost, editPost } from '../api/post';
-import { useNavigate, useParams } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Button, Box, TextField, Typography } from "@mui/material";
+import { Container } from "@mui/system";
+import { getPost, editPost } from "../api/post";
+import { useNavigate, useParams } from "react-router-dom";
 
 // This page is for editing a post of a given id
 // Id is passed through URL params
@@ -11,9 +10,9 @@ const EditPost: React.FC = () => {
   const navigate = useNavigate();
   const params = useParams();
   const id = params["id"] ? Number(params["id"]) : null;
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-  const [postError, setPostError] = useState('');
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [postError, setPostError] = useState("");
 
   useEffect(() => {
     window.scrollTo(0, 0);

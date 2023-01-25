@@ -1,9 +1,8 @@
-import '../App.css';
-import React, { useEffect, useState } from 'react';
-import { Button, Box, TextField, Typography } from '@mui/material';
-import { Container } from '@mui/system';
-import { editComment } from '../api/comment';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Button, Box, TextField, Typography } from "@mui/material";
+import { Container } from "@mui/system";
+import { editComment } from "../api/comment";
+import { useLocation, useNavigate } from "react-router-dom";
 
 // This page is used for editing comments
 // Comment data is passed using location.state
@@ -14,7 +13,7 @@ const EditComment: React.FC = () => {
   // This handles the illegal visit of edit comment page
   const { id, content, redirect } = location.state ? location.state : { id: null, content: "", redirect: "" };
   const [currContent, setCurrContent] = useState(content);
-  const [postError, setPostError] = useState('');
+  const [postError, setPostError] = useState("");
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -39,16 +38,16 @@ const EditComment: React.FC = () => {
     <Container maxWidth="xs">
       <Box sx={{
         marginTop: 8,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center'
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center"
       }} component="form" onSubmit={handleSubmit} >
         <h1>Edit comment</h1>
         <Typography color="error"> {postError} </ Typography>
         <TextField
           value={currContent}
           margin="normal"
-          label="Content"
+          label="Comment"
           rows="5"
           fullWidth
           multiline

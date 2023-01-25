@@ -1,12 +1,11 @@
-import '../App.css';
-import React, { useEffect, useState } from 'react';
-import { Container } from '@mui/system';
-import { CardActionArea, Grid } from '@mui/material';
-import { Link } from 'react-router-dom';
-import PostCard from '../components/PostCard';
-import { useAppSelector, useAppDispatch } from '../store/hooks';
-import { setPostsAsync, setMorePostsAsync, selectPosts } from '../store/postsSlice';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Container } from "@mui/system";
+import { CardActionArea, Grid } from "@mui/material";
+import { Link } from "react-router-dom";
+import PostCard from "../components/PostCard";
+import { useAppSelector, useAppDispatch } from "../store/hooks";
+import { setPostsAsync, setMorePostsAsync, selectPosts } from "../store/postsSlice";
+import { useParams } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 // Shows all posts or posts with a particular tag
